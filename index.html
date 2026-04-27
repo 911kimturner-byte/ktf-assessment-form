@@ -182,7 +182,7 @@
       </div>
       <div class="field">
         <label for="participant-id">4-Digit Participant ID</label>
-        <div class="hint">Choose any 4-digit number and remember it. Use the same ID for every phase.</div>
+        <div class="hint">Choose any 4-digit number and remember it. Use the same ID for every phase. (Instructors: enter 0000)</div>
         <input type="text" id="participant-id" maxlength="4" pattern="[0-9]{4}" inputmode="numeric" autocomplete="off" placeholder="e.g. 4821" />
       </div>
       <div class="actions"><button class="btn btn-primary" id="btn-step1-next">Continue</button></div>
@@ -198,6 +198,7 @@
         <div class="mode-btn" data-mode="pre"><div class="mode-icon">&#9312;</div><div class="mode-name">Pre-Test</div><div class="mode-desc">Before training begins</div></div>
         <div class="mode-btn" data-mode="post"><div class="mode-icon">&#9313;</div><div class="mode-name">Post-Test</div><div class="mode-desc">After training ends</div></div>
         <div class="mode-btn" data-mode="followup"><div class="mode-icon">&#9314;</div><div class="mode-name">30-Day Follow-Up</div><div class="mode-desc">Retention check</div></div>
+        <div class="mode-btn" data-mode="instructor"><div class="mode-icon">&#9315;</div><div class="mode-name">Instructor</div><div class="mode-desc">COPS Office report</div></div>
       </div>
       <div class="actions">
         <button class="btn btn-back" id="btn-step2-back">Back</button>
@@ -349,6 +350,72 @@
           <label class="opt"><input type="radio" name="intent_to_apply" value="Unsure"/> Unsure</label>
           <label class="opt"><input type="radio" name="intent_to_apply" value="Probably not"/> Probably not</label>
         </div>
+        
+        <hr class="section-divider" />
+        <p style="font-weight:700; color:#A01B2A; margin-bottom:6px; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">COPS Office Course Evaluation (Section D)</p>
+        <p style="font-size:12px; color:#6B6B6B; margin-bottom:16px;">Rate each item on a scale of 1 (Strongly Disagree) to 5 (Strongly Agree).</p>
+
+        <div class="q-group"><div class="q-label">D1. Before the course, I would rate my knowledge, skills, and abilities in this subject as:</div><div class="hint-inline" style="font-size:11px;color:#6B6B6B;margin-bottom:6px;">1=None, 2=Little, 3=Basic, 4=Intermediate, 5=Advanced</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_d1" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d1" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d1" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d1" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d1" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">D2. After the course, I would rate my knowledge, skills, and abilities in this subject as:</div><div class="hint-inline" style="font-size:11px;color:#6B6B6B;margin-bottom:6px;">1=None, 2=Little, 3=Basic, 4=Intermediate, 5=Advanced</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_d2" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d2" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d2" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d2" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d2" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">D3. The training objectives and outcomes for the course are explicitly stated and understandable.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_d3" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d3" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d3" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d3" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d3" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">D4. The course provided the knowledge and skills I need to accomplish the job for which I am receiving training.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_d4" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d4" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d4" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d4" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d4" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">D5. Materials are presented in realistic job scenarios that I can easily transfer to my job.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_d5" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d5" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d5" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d5" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d5" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">D6. Based on the training, I am fully capable of implementing the skills I learned.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_d6" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d6" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d6" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d6" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d6" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">D7. The course content is appropriate for someone within my professional field.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_d7" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d7" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d7" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d7" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d7" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">D8. The course content is appropriate for someone with my level of experience.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_d8" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d8" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d8" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d8" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d8" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">D9. Overall, the course met my needs and expectations.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_d9" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d9" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d9" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d9" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d9" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">D10. Overall, the course is effective in meeting the goals and objectives of the course.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_d10" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d10" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d10" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d10" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d10" value="5"/>5</label></div></div>
+
+        <hr class="section-divider" />
+        <p style="font-weight:700; color:#A01B2A; margin-bottom:6px; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">Instructor Evaluation (Section E)</p>
+        <p style="font-size:12px; color:#6B6B6B; margin-bottom:16px;">Rate each item on a scale of 1 (Strongly Disagree) to 5 (Strongly Agree).</p>
+
+        <div class="q-group"><div class="q-label">E1. The instructor(s) were prepared.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_e1" value="1"/>1</label><label class="opt"><input type="radio" name="cops_e1" value="2"/>2</label><label class="opt"><input type="radio" name="cops_e1" value="3"/>3</label><label class="opt"><input type="radio" name="cops_e1" value="4"/>4</label><label class="opt"><input type="radio" name="cops_e1" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">E2. The instructor(s) used instructional time effectively.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_e2" value="1"/>1</label><label class="opt"><input type="radio" name="cops_e2" value="2"/>2</label><label class="opt"><input type="radio" name="cops_e2" value="3"/>3</label><label class="opt"><input type="radio" name="cops_e2" value="4"/>4</label><label class="opt"><input type="radio" name="cops_e2" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">E3. The instructor(s) demonstrated thorough knowledge of course content.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_e3" value="1"/>1</label><label class="opt"><input type="radio" name="cops_e3" value="2"/>2</label><label class="opt"><input type="radio" name="cops_e3" value="3"/>3</label><label class="opt"><input type="radio" name="cops_e3" value="4"/>4</label><label class="opt"><input type="radio" name="cops_e3" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">E4. The instructor(s) were able to answer questions clearly and understandably.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_e4" value="1"/>1</label><label class="opt"><input type="radio" name="cops_e4" value="2"/>2</label><label class="opt"><input type="radio" name="cops_e4" value="3"/>3</label><label class="opt"><input type="radio" name="cops_e4" value="4"/>4</label><label class="opt"><input type="radio" name="cops_e4" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">E5. The instructor(s) conducted the course in a skilled and competent manner.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_e5" value="1"/>1</label><label class="opt"><input type="radio" name="cops_e5" value="2"/>2</label><label class="opt"><input type="radio" name="cops_e5" value="3"/>3</label><label class="opt"><input type="radio" name="cops_e5" value="4"/>4</label><label class="opt"><input type="radio" name="cops_e5" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">E6. The instructor(s) encouraged student participation.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_e6" value="1"/>1</label><label class="opt"><input type="radio" name="cops_e6" value="2"/>2</label><label class="opt"><input type="radio" name="cops_e6" value="3"/>3</label><label class="opt"><input type="radio" name="cops_e6" value="4"/>4</label><label class="opt"><input type="radio" name="cops_e6" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">E7. The instructor(s) fostered a positive and stimulating learning environment.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_e7" value="1"/>1</label><label class="opt"><input type="radio" name="cops_e7" value="2"/>2</label><label class="opt"><input type="radio" name="cops_e7" value="3"/>3</label><label class="opt"><input type="radio" name="cops_e7" value="4"/>4</label><label class="opt"><input type="radio" name="cops_e7" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">E8. The instructor(s) covered all of the course learning objectives.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_e8" value="1"/>1</label><label class="opt"><input type="radio" name="cops_e8" value="2"/>2</label><label class="opt"><input type="radio" name="cops_e8" value="3"/>3</label><label class="opt"><input type="radio" name="cops_e8" value="4"/>4</label><label class="opt"><input type="radio" name="cops_e8" value="5"/>5</label></div></div>
+
+        <div class="q-group"><div class="q-label">E9. Overall, the performance of the instructor(s) met my needs and expectations.</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="cops_e9" value="1"/>1</label><label class="opt"><input type="radio" name="cops_e9" value="2"/>2</label><label class="opt"><input type="radio" name="cops_e9" value="3"/>3</label><label class="opt"><input type="radio" name="cops_e9" value="4"/>4</label><label class="opt"><input type="radio" name="cops_e9" value="5"/>5</label></div></div>
+
         <div class="field"><label for="most_valuable">What was the most valuable part of this training?</label><textarea id="most_valuable" rows="3"></textarea></div>
         <div class="field"><label for="improvements">What improvements would you suggest?</label><textarea id="improvements" rows="3"></textarea></div>
       </div>
@@ -389,6 +456,77 @@
         <div class="field"><label for="followup_comments">Any additional comments about how the training has affected your work?</label><textarea id="followup_comments" rows="3"></textarea></div>
       </div>
 
+
+      <!-- INSTRUCTOR ONLY: COPS SECTIONS A, B, C -->
+      <div id="panel-instructor" class="hidden">
+        <div id="instructor-loading" class="hidden" style="text-align:center;padding:20px;color:#6B6B6B;">Loading session data...</div>
+        <div id="instructor-form">
+
+        <p style="font-weight:700; color:#A01B2A; margin-bottom:6px; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">Section A: Course Details</p>
+
+        <div class="field"><label for="inst_name">Your Name (Instructor)</label><input type="text" id="inst_name" /></div>
+        <div class="field"><label for="inst_email">Your Email</label><input type="email" id="inst_email" /></div>
+        <div class="field"><label>Course Title</label><input type="text" id="inst_course_title" value="De-escalation Training for 9-1-1 Dispatchers" readonly style="background:#eee;" /></div>
+
+        <div class="q-group"><div class="q-label">Type of course:</div>
+          <label class="opt"><input type="radio" name="inst_course_type" value="In-person"/> In-person</label>
+          <label class="opt"><input type="radio" name="inst_course_type" value="Live online"/> Live online</label>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div class="field"><label for="inst_start_date">Course Start Date</label><input type="date" id="inst_start_date" /></div>
+          <div class="field"><label for="inst_end_date">Course End Date</label><input type="date" id="inst_end_date" /></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div class="field"><label for="inst_city">City</label><input type="text" id="inst_city" /></div>
+          <div class="field"><label for="inst_state">State</label><input type="text" id="inst_state" /></div>
+        </div>
+
+        <div class="field"><label for="inst_facility">Facility (for online, enter "Online")</label><input type="text" id="inst_facility" /></div>
+        <div class="field"><label for="inst_host_agency">Host Agency (in-person only)</label><input type="text" id="inst_host_agency" /></div>
+        <div class="field"><label for="inst_trainers">Trainer Name(s), one per line, with affiliation</label><textarea id="inst_trainers" rows="3"></textarea></div>
+        <div class="field"><label for="inst_agencies">Agencies with learners, one per line <span id="agencies-auto" style="font-size:11px;color:#2F6B3A;"></span></label><textarea id="inst_agencies" rows="4"></textarea></div>
+
+        <hr class="section-divider" />
+        <p style="font-weight:700; color:#A01B2A; margin-bottom:6px; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">Section B: Attendee Counts</p>
+        <p style="font-size:12px; color:#6B6B6B; margin-bottom:16px;">Enter the total and break it down by role. Enter 0 for any category with no attendees. The breakdown must sum to the total.</p>
+
+        <div class="field"><label for="inst_total">11. Total number of individuals trained <span id="total-auto" style="font-size:11px;color:#2F6B3A;"></span></label><input type="number" id="inst_total" min="0" /></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div class="field"><label for="inst_ntl">12. Non-tribal line officers</label><input type="number" id="inst_ntl" min="0" value="0" /></div>
+          <div class="field"><label for="inst_ntm">13. Non-tribal mid-level LE</label><input type="number" id="inst_ntm" min="0" value="0" /></div>
+          <div class="field"><label for="inst_nte">14. Non-tribal LE executives</label><input type="number" id="inst_nte" min="0" value="0" /></div>
+          <div class="field"><label for="inst_nsle">15. Non-sworn LE</label><input type="number" id="inst_nsle" min="0" value="0" /></div>
+          <div class="field"><label for="inst_tl">16. Tribal line officers</label><input type="number" id="inst_tl" min="0" value="0" /></div>
+          <div class="field"><label for="inst_tm">17. Tribal mid-level LE</label><input type="number" id="inst_tm" min="0" value="0" /></div>
+          <div class="field"><label for="inst_te">18. Tribal LE executives</label><input type="number" id="inst_te" min="0" value="0" /></div>
+          <div class="field"><label for="inst_cm">19. Community members</label><input type="number" id="inst_cm" min="0" value="0" /></div>
+          <div class="field"><label for="inst_lg">20. Local govt officials (non-LE)</label><input type="number" id="inst_lg" min="0" value="0" /></div>
+          <div class="field"><label for="inst_fe">21. Federal employees</label><input type="number" id="inst_fe" min="0" value="0" /></div>
+        </div>
+
+        <hr class="section-divider" />
+        <p style="font-weight:700; color:#A01B2A; margin-bottom:6px; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">Section C: Pre- and Post-Test Scores</p>
+        <p style="font-size:12px; color:#6B6B6B; margin-bottom:16px;">These scores are auto-calculated from participant assessment data (percentage / 20 = Likert 0-5).</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div class="field"><label>22. Pre-test score (0-5 scale)</label><input type="text" id="inst_pre_score" readonly style="background:#E8F0FE;font-weight:700;font-size:18px;text-align:center;" /></div>
+          <div class="field"><label>23. Post-test score (0-5 scale)</label><input type="text" id="inst_post_score" readonly style="background:#E8F0FE;font-weight:700;font-size:18px;text-align:center;" /></div>
+        </div>
+        <div id="score-note" style="font-size:12px;color:#6B6B6B;margin-bottom:16px;"></div>
+
+        <hr class="section-divider" />
+        <p style="font-weight:700; color:#A01B2A; margin-bottom:6px; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">Section D/E Averages (Auto-calculated)</p>
+        <p style="font-size:12px; color:#6B6B6B; margin-bottom:16px;">These are the mean participant evaluation scores from the post-test. They will populate after participants complete the post-test with the COPS evaluation items.</p>
+        <div id="eval-averages" style="font-size:13px; color:#6B6B6B;"></div>
+
+        <hr class="section-divider" />
+        <div class="field"><label for="inst_notes">Instructor Notes (optional)</label><textarea id="inst_notes" rows="3" placeholder="Any observations, issues, or recommendations for this delivery..."></textarea></div>
+
+        </div>
+      </div>
+
       <div class="actions">
         <button class="btn btn-back" id="btn-step3-back">Back</button>
         <button class="btn btn-primary" id="btn-submit">Submit Assessment</button>
@@ -409,7 +547,7 @@
 </main>
 
 <script>
-const CONFIG = { COURSE_CODE:"KTF-DEESC", COURSE_NAME:"De-escalation Training for 9-1-1 Dispatchers", ENDPOINT_URL:"https://script.google.com/macros/s/AKfycbz47iaqo2ITLSjRfMoVp3XlzMtCHDt3YYJdR90H67QAsF7eOaIHNNvb2K8YaRSYYKKL-g/exec", VERSION:"2.0" };
+const CONFIG = { COURSE_CODE:"KTF-DEESC", COURSE_NAME:"De-escalation Training for 9-1-1 Dispatchers", ENDPOINT_URL:"https://script.google.com/macros/s/AKfycbz47iaqo2ITLSjRfMoVp3XlzMtCHDt3YYJdR90H67QAsF7eOaIHNNvb2K8YaRSYYKKL-g/exec", VERSION:"2.1" };
 const state = { step:1, sessionCode:"", participantId:"", workEmail:"", mode:null };
 const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
 
@@ -437,12 +575,49 @@ $("#btn-step1-next").addEventListener("click",()=>{
 // STEP 2
 $$(".mode-btn").forEach(b=>{b.addEventListener("click",()=>{$$(".mode-btn").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");state.mode=b.getAttribute("data-mode");$("#btn-step2-next").disabled=false;});});
 $("#btn-step2-back").addEventListener("click",()=>setStep(1));
-$("#btn-step2-next").addEventListener("click",()=>{
+$("#btn-step2-next").addEventListener("click",async()=>{
   const h=$("#assess-heading"),l=$("#assess-lede");
-  ["panel-demographics","panel-pre-open","panel-post-feedback","panel-followup"].forEach(id=>document.getElementById(id).classList.add("hidden"));
+  ["panel-demographics","panel-pre-open","panel-post-feedback","panel-followup","panel-instructor","panel-knowledge","panel-confidence"].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.add("hidden");});
+  // Show knowledge and confidence for non-instructor modes
+  if(state.mode!=="instructor"){$("#panel-knowledge").classList.remove("hidden");$("#panel-confidence").classList.remove("hidden");}
   if(state.mode==="pre"){h.textContent="Pre-Training Assessment";l.textContent='Answer based on your CURRENT knowledge and confidence, BEFORE training begins. There are no penalties for selecting "I am not sure."';$("#panel-demographics").classList.remove("hidden");$("#panel-pre-open").classList.remove("hidden");}
   else if(state.mode==="post"){h.textContent="Post-Training Assessment";l.textContent="Answer based on what you now know AFTER completing today's training. Use the same Participant ID and email you used for the pre-test.";$("#panel-post-feedback").classList.remove("hidden");}
-  else{h.textContent="30-Day Follow-Up Assessment";l.textContent="Answer based on your current knowledge and confidence 30 days after training. This measures how well the learning has carried into your daily work.";$("#panel-followup").classList.remove("hidden");}
+  else if(state.mode==="followup"){h.textContent="30-Day Follow-Up Assessment";l.textContent="Answer based on your current knowledge and confidence 30 days after training. This measures how well the learning has carried into your daily work.";$("#panel-followup").classList.remove("hidden");$("#panel-knowledge").classList.remove("hidden");}
+  else if(state.mode==="instructor"){
+    h.textContent="COPS Office Instructor Report";l.textContent="Sections A through C. Participant scores and evaluation averages are auto-populated from assessment data.";
+    $("#panel-instructor").classList.remove("hidden");
+    // Hide knowledge/confidence panels for instructor
+    $("#panel-knowledge").classList.add("hidden");
+    // Fetch stats
+    if(CONFIG.ENDPOINT_URL&&CONFIG.ENDPOINT_URL.indexOf("REPLACE_WITH")===-1){
+      $("#instructor-loading").classList.remove("hidden");
+      try{
+        const r=await fetch(CONFIG.ENDPOINT_URL+"?action=stats&session="+encodeURIComponent(state.sessionCode));
+        const s=await r.json();
+        if(s.found){
+          $("#inst_total").value=Math.max(s.n_pre,s.n_post);
+          $("#total-auto").textContent="("+Math.max(s.n_pre,s.n_post)+" from assessment data)";
+          $("#inst_pre_score").value=s.pre_score_likert.toFixed(2);
+          $("#inst_post_score").value=s.post_score_likert.toFixed(2);
+          $("#score-note").textContent="Pre: "+s.pre_score_pct+"% = "+s.pre_score_likert.toFixed(2)+" on 0-5 | Post: "+s.post_score_pct+"% = "+s.post_score_likert.toFixed(2)+" on 0-5 | Based on "+s.n_pre+" pre-tests and "+s.n_post+" post-tests.";
+          if(s.agencies&&s.agencies.length){
+            $("#inst_agencies").value=s.agencies.join("\n");
+            $("#agencies-auto").textContent="(auto-populated from participant data)";
+          }
+          // Show eval averages
+          const dLabels=["D1: Pre-KSA self-rating","D2: Post-KSA self-rating","D3: Objectives clear","D4: Provided needed KSA","D5: Realistic scenarios","D6: Capable of implementing","D7: Appropriate for field","D8: Appropriate for experience","D9: Met needs/expectations","D10: Effective for goals"];
+          const eLabels=["E1: Prepared","E2: Used time effectively","E3: Thorough knowledge","E4: Answered questions clearly","E5: Skilled/competent","E6: Encouraged participation","E7: Positive environment","E8: Covered all objectives","E9: Overall performance"];
+          let evalHtml="";
+          if(Object.keys(s.eval_d).length||Object.keys(s.eval_e).length){
+            dLabels.forEach(function(lb,i){const k="cops_d"+(i+1);if(s.eval_d[k])evalHtml+="<div>"+lb+": <strong>"+s.eval_d[k].toFixed(2)+"</strong>/5</div>";});
+            eLabels.forEach(function(lb,i){const k="cops_e"+(i+1);if(s.eval_e[k])evalHtml+="<div>"+lb+": <strong>"+s.eval_e[k].toFixed(2)+"</strong>/5</div>";});
+          } else { evalHtml="<div>No COPS evaluation data yet. Averages will appear after participants complete the post-test.</div>"; }
+          $("#eval-averages").innerHTML=evalHtml;
+        } else { $("#score-note").textContent="No participant data found for this session yet."; }
+      }catch(err){console.error(err);$("#score-note").textContent="Could not load session data. You can enter scores manually.";}
+      $("#instructor-loading").classList.add("hidden");
+    }
+  }
   setStep(3);
 });
 $("#btn-step3-back").addEventListener("click",()=>setStep(2));
@@ -450,6 +625,30 @@ $("#btn-step3-back").addEventListener("click",()=>setStep(2));
 // SUBMIT
 $("#btn-submit").addEventListener("click",async()=>{
   const btn=$("#btn-submit");btn.disabled=true;btn.textContent="Submitting...";
+  // INSTRUCTOR SUBMIT
+  if(state.mode==="instructor"){
+    const iPayload={course_code:CONFIG.COURSE_CODE,course_name:CONFIG.COURSE_NAME,session_code:state.sessionCode,assessment_type:"instructor",submitted_at:new Date().toISOString(),form_version:CONFIG.VERSION,
+      data:{instructor_name:$("#inst_name").value.trim(),instructor_email:$("#inst_email").value.trim(),
+        course_title:$("#inst_course_title").value,course_type:(document.querySelector('input[name="inst_course_type"]:checked')||{}).value||"",
+        start_date:$("#inst_start_date").value,end_date:$("#inst_end_date").value,
+        city:$("#inst_city").value.trim(),state:$("#inst_state").value.trim(),
+        facility:$("#inst_facility").value.trim(),host_agency:$("#inst_host_agency").value.trim(),
+        trainer_names:$("#inst_trainers").value.trim(),agencies_list:$("#inst_agencies").value.trim(),
+        total_trained:parseInt($("#inst_total").value)||0,
+        non_tribal_line:parseInt($("#inst_ntl").value)||0,non_tribal_mid:parseInt($("#inst_ntm").value)||0,non_tribal_exec:parseInt($("#inst_nte").value)||0,
+        non_sworn_le:parseInt($("#inst_nsle").value)||0,tribal_line:parseInt($("#inst_tl").value)||0,tribal_mid:parseInt($("#inst_tm").value)||0,tribal_exec:parseInt($("#inst_te").value)||0,
+        community_members:parseInt($("#inst_cm").value)||0,local_govt:parseInt($("#inst_lg").value)||0,federal_employees:parseInt($("#inst_fe").value)||0,
+        pre_score_likert:$("#inst_pre_score").value,post_score_likert:$("#inst_post_score").value,
+        instructor_notes:$("#inst_notes").value.trim()}};
+    try{
+      if(CONFIG.ENDPOINT_URL&&CONFIG.ENDPOINT_URL.indexOf("REPLACE_WITH")===-1){await fetch(CONFIG.ENDPOINT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(iPayload)});}
+      else{console.warn("ENDPOINT_URL not configured.",iPayload);}
+      $("#receipt-id").textContent=state.sessionCode+"-INSTRUCTOR";
+      $("#next-step-msg").innerHTML="<strong>Complete.</strong> Your COPS Office instructor report has been submitted and saved to the master database.";
+      setStep(4);
+    }catch(err){console.error(err);showError("Submission failed. Please try again.");btn.disabled=false;btn.textContent="Submit Assessment";}
+    return;
+  }
   const allR=document.querySelectorAll('#step-3 input[type="radio"]');const names=new Set();
   allR.forEach(r=>{if(!r.closest(".hidden"))names.add(r.name);});
   const data={};names.forEach(n=>{const c=document.querySelector('input[name="'+n+'"]:checked');data[n]=c?c.value:"";});
