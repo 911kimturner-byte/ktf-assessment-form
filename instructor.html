@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="theme-color" content="#0A2540"/>
+<title>The Kim Turner Foundation | Instructor Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--navy:#0A2540;--navy-soft:#133358;--crimson:#A01B2A;--paper:#FAFAF7;--paper-warm:#F4F1EA;--ink:#1A1A1A;--muted:#6B6B6B;--line:#D9D5CB;--gold:#B8923B;--success:#2F6B3A;--blue-soft:#E8F0FE;--blue-border:#B6D0F7}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:'Public Sans',system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{min-height:100vh;padding:0 0 80px}
+.topbar{background:var(--navy);color:var(--paper);padding:16px 20px;display:flex;align-items:center;gap:16px;border-bottom:3px solid var(--crimson)}
+.topbar .logo-mark{flex-shrink:0}
+.topbar .logo-mark svg{display:block;height:44px;width:auto}
+.topbar .divider{width:1px;height:36px;background:rgba(255,255,255,0.22);flex-shrink:0}
+.topbar .org{font-family:'Public Sans',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;opacity:0.82;line-height:1.4}
+.topbar .org a{color:inherit;text-decoration:none;display:block;font-size:11px;margin-top:2px;letter-spacing:0.04em;opacity:0.7;text-transform:none}
+.container{max-width:760px;margin:0 auto;padding:28px 20px 0}
+.hero{border:1px solid var(--line);background:#fff;padding:28px 26px;margin-bottom:22px;position:relative}
+.hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold)}
+.hero .eyebrow{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
+.hero h1{font-family:'Lora',serif;font-weight:600;font-size:24px;color:var(--navy);line-height:1.2;margin-bottom:8px}
+.hero p{color:var(--muted);font-size:14px}
+.card{background:#fff;border:1px solid var(--line);padding:26px 24px;margin-bottom:18px}
+.card h2{font-family:'Lora',serif;font-weight:600;font-size:18px;color:var(--navy);margin-bottom:6px}
+.card .lede{color:var(--muted);font-size:13px;margin-bottom:18px}
+.section-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--crimson);font-weight:700;margin-bottom:14px;padding-bottom:6px;border-bottom:2px solid var(--crimson)}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:600;font-size:13px;margin-bottom:5px}
+.field .hint{font-size:11px;color:var(--muted);margin-bottom:5px}
+.field input[type="text"],.field input[type="number"],.field input[type="date"],.field select,.field textarea{width:100%;padding:10px 12px;font-size:14px;font-family:inherit;border:1px solid var(--line);background:var(--paper);transition:border 0.2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--navy)}
+.field textarea{min-height:70px;resize:vertical}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.auto-filled{background:var(--blue-soft) !important;border-color:var(--blue-border) !important;font-weight:600}
+.auto-badge{display:inline-block;font-size:10px;background:var(--navy);color:#fff;padding:2px 8px;border-radius:10px;margin-left:8px;font-weight:600;letter-spacing:0.04em}
+.likert-table{width:100%;border-collapse:collapse;margin-bottom:18px;font-size:13px}
+.likert-table th{background:var(--navy);color:#fff;padding:8px 6px;text-align:center;font-size:10px;font-weight:600}
+.likert-table th:first-child{text-align:left;width:50%}
+.likert-table td{padding:10px 6px;border-bottom:1px solid var(--line);text-align:center}
+.likert-table td:first-child{text-align:left;font-size:13px;line-height:1.35}
+.likert-table tr:nth-child(even){background:var(--paper-warm)}
+.likert-table input[type="radio"]{width:18px;height:18px;cursor:pointer}
+.btn{padding:13px 26px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;border:none;transition:background 0.2s}
+.btn-primary{background:var(--navy);color:#fff;width:100%}
+.btn-primary:hover{background:var(--navy-soft)}
+.btn-primary:disabled{background:var(--line);color:var(--muted);cursor:not-allowed}
+.error-banner{background:#FEE2E2;border:1px solid #FECACA;color:#991B1B;padding:12px 16px;margin-bottom:16px;font-size:14px;font-weight:500;display:none}
+.success-box{text-align:center;padding:40px 20px}
+.success-box .check{width:56px;height:56px;border-radius:50%;background:var(--success);color:#fff;display:inline-grid;place-items:center;font-size:28px;margin-bottom:16px}
+.success-box h2{font-family:'Lora',serif;color:var(--navy);margin-bottom:10px}
+.success-box p{color:var(--muted);font-size:15px}
+.hidden{display:none !important}
+.score-panel{background:var(--blue-soft);border:1px solid var(--blue-border);padding:16px;margin-bottom:18px}
+.score-panel h3{font-size:14px;color:var(--navy);margin-bottom:10px}
+.score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.score-item{text-align:center}
+.score-item .score-val{font-size:22px;font-weight:700;color:var(--navy)}
+.score-item .score-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em}
+@media(max-width:600px){
+.topbar{padding:12px 16px;gap:12px}
+.topbar .logo-mark svg{height:34px}
+.container{padding:18px 14px 0}
+.hero{padding:20px 16px}
+.card{padding:18px 14px}
+.field-row,.field-row-3{grid-template-columns:1fr}
+.score-grid{grid-template-columns:1fr}
+.likert-table th:first-child{width:40%}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.28 152.37" aria-label="The Kim Turner Foundation"><defs><style>.ktf-f{fill:#fff}.ktf-l{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:2.5px}</style></defs><g><path class="ktf-f" d="M73.9,25.54H85.17V58h.35L98.39,25.54h11.23L95.26,60.38l16,39.45h-12L85.52,64.47h-.35V99.83H73.9Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M117.62,25.54h11.26V99.83H117.62Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M141.59,25.54h14.7l7.13,28.75c.75,3.19,1.35,6.23,1.78,9.11s.86,5.61,1.27,8.16h.34q.62-3.82,1.27-8.16t1.78-9.11l7.35-28.75h14.4V99.83H181.08V75.25c0-3.76,0-7.39.11-10.87s.17-6.68.28-9.59.25-5.49.39-7.72.28-4,.4-5.31h-.83l-11.22,48.5h-7.14l-11.31-48.5h-.82q.17,2,.39,5.31c.14,2.23.27,4.81.39,7.72s.21,6.11.28,9.59.11,7.11.11,10.87V99.83H141.59Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M230.23,34.41h-12V25.54h35.15v8.87H241.5V99.83H230.23Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M260.77,25.54h11.35V80a40,40,0,0,0,.35,5.78,11,11,0,0,0,1.11,3.68,4.53,4.53,0,0,0,1.95,2,6.31,6.31,0,0,0,2.85.59,6.59,6.59,0,0,0,2.9-.59,4.76,4.76,0,0,0,2-2,11.31,11.31,0,0,0,1.22-3.68A34.22,34.22,0,0,0,285,80V25.54h11.22V77a43,43,0,0,1-.87,9.31,24.65,24.65,0,0,1-2.3,6.48,14.05,14.05,0,0,1-3.29,4.14,14.64,14.64,0,0,1-3.82,2.32,14.91,14.91,0,0,1-3.94,1,33.56,33.56,0,0,1-3.57.21,33,33,0,0,1-3.54-.21,14.63,14.63,0,0,1-7.68-3.35,14.32,14.32,0,0,1-3.26-4.14,23.94,23.94,0,0,1-2.28-6.46,43.66,43.66,0,0,1-.85-9.33Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M308.61,25.54h12.23c1.39,0,2.92.06,4.59.17a26.55,26.55,0,0,1,5,.85,20.22,20.22,0,0,1,4.83,2,14.25,14.25,0,0,1,4.13,3.7,18.51,18.51,0,0,1,2.89,5.89,29.43,29.43,0,0,1,1.09,8.59v1.87q0,8.49-2.44,13.81a15.23,15.23,0,0,1-7.17,7.68l11.91,29.71H333.76L323.88,72h-4.22V99.83H308.61ZM321.36,63.9a16.76,16.76,0,0,0,5-.65,6.9,6.9,0,0,0,3.31-2.2A9.6,9.6,0,0,0,331.49,57a29.25,29.25,0,0,0,.57-6.28V44.81a21,21,0,0,0-.52-5,7.86,7.86,0,0,0-1.76-3.44,7.51,7.51,0,0,0-3.29-2,17.27,17.27,0,0,0-5.13-.65h-1.7V63.9Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M354.2,25.54h9.13l18,49.71h.26c-.08-1.15-.2-2.45-.35-3.87s-.27-3-.39-4.85-.21-3.86-.3-6.15-.13-4.87-.13-7.74V25.54h10.09V99.83H381.3L363.38,51.42H363c.09,1.3.2,2.72.35,4.24s.27,3.31.39,5.37.22,4.46.3,7.2.13,6,.13,9.77V99.83h-10Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M403.22,25.54h27.53v8.87H414.49V56.64h12.57v8.87H414.49V91h16.7v8.87h-28Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M439.32,25.54h12.22c1.4,0,2.93.06,4.59.17a26.52,26.52,0,0,1,5,.85,20,20,0,0,1,4.82,2,14.28,14.28,0,0,1,4.14,3.7A18.72,18.72,0,0,1,473,38.17a29.77,29.77,0,0,1,1.09,8.59v1.87q0,8.49-2.44,13.81a15.25,15.25,0,0,1-7.18,7.68l11.92,29.71H464.46L454.59,72h-4.22V99.83H439.32ZM452.07,63.9a16.76,16.76,0,0,0,5-.65,7,7,0,0,0,3.31-2.2A9.73,9.73,0,0,0,462.2,57a29.25,29.25,0,0,0,.57-6.28V44.81a21,21,0,0,0-.52-5,7.77,7.77,0,0,0-1.77-3.44,7.41,7.41,0,0,0-3.28-2,17.27,17.27,0,0,0-5.13-.65h-1.7V63.9Z" transform="translate(-18.1 -25.54)"/></g><g><path class="ktf-f" d="M22.38,94.24v5.67h-4.2V83.25h4.2V88.9h31v5.34Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M18.18,71.2V65.86H32.92V59.53H18.18V54.19H53.39v5.34H37.12v6.33H53.39V71.2Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M18.18,39.69v-13h4.2v7.71H32.92v-6h4.2v6H49.18V26.43h4.21V39.69Z" transform="translate(-18.1 -25.54)"/></g><g><path class="ktf-f" d="M18.19,134.22H34.75v5.18h-10v12.95h7.83v5.18H24.76v20H18.19Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M72.6,177.91a16.75,16.75,0,0,1-2.25-.16,8.59,8.59,0,0,1-2.41-.7,8.94,8.94,0,0,1-2.3-1.51,9.29,9.29,0,0,1-2-2.57A15,15,0,0,1,62.34,169a26.74,26.74,0,0,1-.51-5.6V148.09a25.74,25.74,0,0,1,.52-5.59,14.64,14.64,0,0,1,1.38-3.9,8.44,8.44,0,0,1,4.27-4,9.4,9.4,0,0,1,2.4-.64,16,16,0,0,1,2.2-.16,19.14,19.14,0,0,1,2.15.14,9.7,9.7,0,0,1,2.35.61,8.36,8.36,0,0,1,2.3,1.4,8.47,8.47,0,0,1,2,2.51,15.21,15.21,0,0,1,1.38,3.93,26.3,26.3,0,0,1,.52,5.66v15.34a25.32,25.32,0,0,1-.53,5.54,15.75,15.75,0,0,1-1.4,3.93,8.84,8.84,0,0,1-2,2.59A9.68,9.68,0,0,1,77.05,177a8.43,8.43,0,0,1-2.34.73A15.27,15.27,0,0,1,72.6,177.91Zm0-4.94a4,4,0,0,0,1.69-.33,2.66,2.66,0,0,0,1.19-1.14,6.76,6.76,0,0,0,.71-2.15,19.3,19.3,0,0,0,.24-3.35V146.29a21,21,0,0,0-.24-3.47,7.2,7.2,0,0,0-.71-2.24,2.78,2.78,0,0,0-1.19-1.21A3.73,3.73,0,0,0,72.6,139a3.89,3.89,0,0,0-1.72.35,2.84,2.84,0,0,0-1.22,1.21,6.93,6.93,0,0,0-.72,2.24,21,21,0,0,0-.24,3.47V166a19.3,19.3,0,0,0,.24,3.35,6.51,6.51,0,0,0,.72,2.15,2.72,2.72,0,0,0,1.22,1.14A4.19,4.19,0,0,0,72.6,173Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M113.23,134.22h6.62V166a22.55,22.55,0,0,0,.2,3.37,6.39,6.39,0,0,0,.64,2.14,2.66,2.66,0,0,0,1.15,1.15,3.81,3.81,0,0,0,1.66.34,4,4,0,0,0,1.68-.34,2.74,2.74,0,0,0,1.19-1.15,6.3,6.3,0,0,0,.71-2.14,19.51,19.51,0,0,0,.25-3.37V134.22h6.54v30a25,25,0,0,1-.51,5.43,14.73,14.73,0,0,1-1.34,3.77,8.1,8.1,0,0,1-1.92,2.41,8.62,8.62,0,0,1-2.23,1.36,8.92,8.92,0,0,1-2.29.6,20.26,20.26,0,0,1-2.08.12,19.63,19.63,0,0,1-2.07-.12,8.78,8.78,0,0,1-2.27-.6,8.52,8.52,0,0,1-2.21-1.36,8.22,8.22,0,0,1-1.9-2.41,14.29,14.29,0,0,1-1.33-3.76,25.72,25.72,0,0,1-.49-5.44Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M165,134.22h5.32l10.5,29H181c0-.68-.12-1.43-.2-2.26s-.16-1.77-.23-2.83-.13-2.25-.18-3.59-.07-2.84-.07-4.51v-15.8h5.88v43.31H180.8l-10.44-28.22h-.21c0,.76.12,1.59.21,2.47s.16,1.93.22,3.14.13,2.59.18,4.19.08,3.5.08,5.69v12.73H165Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M217.47,134.22h6.82q1.54,0,3.21.09a14.17,14.17,0,0,1,3.24.55,10.28,10.28,0,0,1,3,1.41,8.72,8.72,0,0,1,2.47,2.66,14.46,14.46,0,0,1,1.68,4.31,27.37,27.37,0,0,1,.63,6.35v12.58a27.52,27.52,0,0,1-.63,6.36,14.25,14.25,0,0,1-1.68,4.31,8.79,8.79,0,0,1-2.47,2.65,10.82,10.82,0,0,1-3,1.41,14.73,14.73,0,0,1-3.24.54q-1.67.09-3.21.09h-6.82Zm8.24,38.72a8.17,8.17,0,0,0,2.93-.45,3.6,3.6,0,0,0,1.82-1.61,8.41,8.41,0,0,0,.93-3.15,40.82,40.82,0,0,0,.25-5V149.26a40.82,40.82,0,0,0-.25-5,8.41,8.41,0,0,0-.93-3.15,3.6,3.6,0,0,0-1.82-1.61,8.17,8.17,0,0,0-2.93-.45H224v33.92Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M273,134.22h7.55l8,43.31H282l-1.19-7.76h-7.91l-1.14,7.76H265Zm7,30.61-3-21.58h-.28l-3.07,21.58Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M320.67,139.4h-7v-5.18h20.49v5.18h-6.95v38.13h-6.57Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M362.51,134.22h6.57v43.31h-6.57Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M410,177.91a16.78,16.78,0,0,1-2.26-.16,8.59,8.59,0,0,1-2.41-.7,8.89,8.89,0,0,1-2.29-1.51,9.12,9.12,0,0,1-2-2.57,15.36,15.36,0,0,1-1.35-3.94,26.74,26.74,0,0,1-.51-5.6V148.09a25.74,25.74,0,0,1,.52-5.59,15,15,0,0,1,1.38-3.9,8.64,8.64,0,0,1,2-2.52,8.47,8.47,0,0,1,2.3-1.44,9.51,9.51,0,0,1,2.4-.64,16.07,16.07,0,0,1,2.21-.16,19.12,19.12,0,0,1,2.14.14,9.9,9.9,0,0,1,2.36.61,8.35,8.35,0,0,1,4.27,3.91,15.21,15.21,0,0,1,1.38,3.93,26.3,26.3,0,0,1,.52,5.66v15.34a25.32,25.32,0,0,1-.53,5.54,15.75,15.75,0,0,1-1.4,3.93,8.84,8.84,0,0,1-2,2.59,9.84,9.84,0,0,1-2.3,1.52,8.6,8.6,0,0,1-2.35.73A15.26,15.26,0,0,1,410,177.91Zm0-4.94a4,4,0,0,0,1.68-.33,2.66,2.66,0,0,0,1.19-1.14,6.52,6.52,0,0,0,.71-2.15,19.3,19.3,0,0,0,.24-3.35V146.29a21,21,0,0,0-.24-3.47,7,7,0,0,0-.71-2.24,2.78,2.78,0,0,0-1.19-1.21A3.71,3.71,0,0,0,410,139a3.9,3.9,0,0,0-1.73.35,2.84,2.84,0,0,0-1.22,1.21,6.93,6.93,0,0,0-.72,2.24,21,21,0,0,0-.24,3.47V166a19.3,19.3,0,0,0,.24,3.35,6.51,6.51,0,0,0,.72,2.15,2.72,2.72,0,0,0,1.22,1.14A4.2,4.2,0,0,0,410,173Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M450.73,134.22h5.32l10.5,29h.16c-.06-.68-.12-1.43-.21-2.26s-.16-1.77-.23-2.83-.12-2.25-.17-3.59S466,151.69,466,150v-15.8h5.88v43.31h-5.37l-10.45-28.22h-.2c.05.76.12,1.59.2,2.47s.16,1.93.23,3.14.13,2.59.18,4.19.07,3.5.07,5.69v12.73h-5.83Z" transform="translate(-18.1 -25.54)"/></g><line class="ktf-l" y1="92.93" x2="458.14" y2="92.93"/></svg></div>
+  <div class="divider"></div>
+  <div class="org">Instructor Report<a href="http://www.thektf.com" target="_blank" rel="noopener">www.thektf.com</a></div>
+</header>
+
+<main class="container">
+  <div class="hero">
+    <div class="eyebrow">COPS Office Trainer Intake</div>
+    <h1>De-escalation Training for 9-1-1 Dispatchers</h1>
+    <p>Instructors complete Sections A, B, and C after each delivery. Sections D and E are completed by attendees before leaving for the day.</p>
+  </div>
+
+  <div id="error-banner" class="error-banner"></div>
+
+  <div id="form-area">
+
+  <!-- SECTION A -->
+  <div class="card">
+    <div class="section-label">Section A: Course Details</div>
+    <div class="field">
+      <label>1. Course Title <span class="auto-badge">Auto</span></label>
+      <input type="text" id="course_title" value="COPS Office De-escalation Training for Dispatchers" class="auto-filled" readonly/>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>2. Type of Course</label>
+        <select id="course_type"><option value="In-person">In-person</option><option value="Live online">Live online</option></select>
+      </div>
+      <div class="field">
+        <label>Session</label>
+        <select id="session_code">
+          <option value="">Select session...</option>
+          <optgroup label="2026">
+            <option value="DEESC-042226">Apr 22, 2026 | Washington, DC</option>
+            <option value="DEESC-042826">Apr 28, 2026 | Anaheim</option>
+            <option value="DEESC-080526">Aug 5, 2026 | Online</option>
+            <option value="DEESC-082026">Aug 20, 2026 | Online</option>
+            <option value="DEESC-082826">Aug 28, 2026 | Online</option>
+            <option value="DEESC-092926">Sep 29, 2026 | Online</option>
+            <option value="DEESC-101226">Oct 12, 2026 | Online</option>
+            <option value="DEESC-102626">Oct 26, 2026 | Online</option>
+            <option value="DEESC-102926">Oct 29, 2026 | Online</option>
+            <option value="DEESC-111626">Nov 16, 2026 | Online</option>
+            <option value="DEESC-113026">Nov 30, 2026 | Online</option>
+            <option value="DEESC-120926">Dec 9, 2026 | Online</option>
+            <option value="DEESC-123026">Dec 30, 2026 | Online</option>
+          </optgroup>
+          <optgroup label="2027">
+            <option value="DEESC-010627">Jan 6, 2027 | Online</option>
+            <option value="DEESC-012227">Jan 22, 2027 | Online</option>
+            <option value="DEESC-012527">Jan 25, 2027 | Cobb County, GA</option>
+            <option value="DEESC-020427">Feb 4, 2027 | Online</option>
+            <option value="DEESC-021727">Feb 17, 2027 | Online</option>
+            <option value="DEESC-022327">Feb 23, 2027 | El Paso</option>
+            <option value="DEESC-031127">Mar 11, 2027 | Online</option>
+            <option value="DEESC-031927">Mar 19, 2027 | Online</option>
+            <option value="DEESC-032427">Mar 24, 2027 | Online</option>
+            <option value="DEESC-040827">Apr 8, 2027 | Online</option>
+            <option value="DEESC-041327">Apr 13, 2027 | Online</option>
+            <option value="DEESC-042627">Apr 26, 2027 | Maui</option>
+            <option value="DEESC-050527">May 5, 2027 | Online</option>
+            <option value="DEESC-052127">May 21, 2027 | Online</option>
+            <option value="DEESC-060327">Jun 3, 2027 | Online</option>
+            <option value="DEESC-061127">Jun 11, 2027 | Online</option>
+            <option value="DEESC-062827">Jun 28, 2027 | Montgomery College, MD</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>3. Course Start Date</label><input type="date" id="start_date"/></div>
+      <div class="field"><label>4. Course End Date</label><input type="date" id="end_date"/></div>
+    </div>
+    <div class="field-row-3">
+      <div class="field"><label>5. City</label><input type="text" id="city"/></div>
+      <div class="field"><label>6. State</label><input type="text" id="state"/></div>
+      <div class="field"><label>7. Facility</label><input type="text" id="facility"/></div>
+    </div>
+    <div class="field"><label>8. Host Agency</label><div class="hint">Complete only for in-person delivery.</div><input type="text" id="host_agency"/></div>
+    <div class="field"><label>9. Trainer Name(s)</label><div class="hint">One per line, with affiliation.</div><textarea id="trainers">Kim Turner, The Kim Turner Foundation
+Sean Hadden, The Kim Turner Foundation
+Anthony Alvo, The Kim Turner Foundation</textarea></div>
+    <div class="field"><label>10. Agencies with Learners</label><div class="hint">One per line.</div><textarea id="agencies"></textarea></div>
+  </div>
+
+  <!-- SECTION B -->
+  <div class="card">
+    <div class="section-label">Section B: Attendee Counts</div>
+    <p class="lede">Enter the total number of individuals trained, then break the total down by role. Enter 0 for any category with no attendees. The breakdown must sum to the total.</p>
+    <div class="field"><label>11. Total Number of Individuals Trained</label><input type="number" id="total_trained" min="0" value="0"/></div>
+    <div class="field-row">
+      <div class="field"><label>12. Non-tribal Line Officers</label><input type="number" id="cnt_nt_line" min="0" value="0"/></div>
+      <div class="field"><label>13. Non-tribal Mid-level LE</label><input type="number" id="cnt_nt_mid" min="0" value="0"/></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>14. Non-tribal LE Executives</label><input type="number" id="cnt_nt_exec" min="0" value="0"/></div>
+      <div class="field"><label>15. Non-sworn LE</label><input type="number" id="cnt_nonsworn" min="0" value="0"/></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>16. Tribal Line Officers</label><input type="number" id="cnt_tr_line" min="0" value="0"/></div>
+      <div class="field"><label>17. Tribal Mid-level LE</label><input type="number" id="cnt_tr_mid" min="0" value="0"/></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>18. Tribal LE Executives</label><input type="number" id="cnt_tr_exec" min="0" value="0"/></div>
+      <div class="field"><label>19. Community Members</label><input type="number" id="cnt_community" min="0" value="0"/></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>20. Local Gov Officials (non-LE)</label><input type="number" id="cnt_local_gov" min="0" value="0"/></div>
+      <div class="field"><label>21. Federal Employees</label><input type="number" id="cnt_federal" min="0" value="0"/></div>
+    </div>
+  </div>
+
+  <!-- SECTION C -->
+  <div class="card">
+    <div class="section-label">Section C: Pre- and Post-Test Scores</div>
+    <p class="lede">These scores are pulled from participant assessment data. Convert raw percentage scores to a 0 to 5 Likert scale by dividing by 20. For example, 80% equals 4.00.</p>
+    <div id="score-auto-panel" class="score-panel hidden">
+      <h3>Participant Data (Auto-Populated) <span class="auto-badge">From Assessment</span></h3>
+      <div class="score-grid">
+        <div class="score-item"><div class="score-val" id="auto_pre_pct">--</div><div class="score-label">Pre-Test Mean %</div></div>
+        <div class="score-item"><div class="score-val" id="auto_post_pct">--</div><div class="score-label">Post-Test Mean %</div></div>
+        <div class="score-item"><div class="score-val" id="auto_gain">--</div><div class="score-label">Knowledge Gain</div></div>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>22. Pre-Test Score (0 to 5 scale)</label><select id="pre_score"><option value="">Select...</option></select></div>
+      <div class="field"><label>23. Post-Test Score (0 to 5 scale)</label><select id="post_score"><option value="">Select...</option></select></div>
+    </div>
+  </div>
+
+  <!-- SECTION D -->
+  <div class="card">
+    <div class="section-label">Section D: Course Evaluation (Completed by Attendees)</div>
+    <p class="lede">Attendees rate each item on a 1 to 5 scale. Enter the average score for each item across all attendees. If collecting individually, average the responses after class.</p>
+    <table class="likert-table">
+      <thead><tr><th>Statement</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+      <tbody>
+        <tr><td>Before the course, I would rate my knowledge, skills, and abilities in this subject as:</td><td><input type="radio" name="d1" value="1"/></td><td><input type="radio" name="d1" value="2"/></td><td><input type="radio" name="d1" value="3"/></td><td><input type="radio" name="d1" value="4"/></td><td><input type="radio" name="d1" value="5"/></td></tr>
+        <tr><td>After the course, I would rate my knowledge, skills, and abilities in this subject as:</td><td><input type="radio" name="d2" value="1"/></td><td><input type="radio" name="d2" value="2"/></td><td><input type="radio" name="d2" value="3"/></td><td><input type="radio" name="d2" value="4"/></td><td><input type="radio" name="d2" value="5"/></td></tr>
+        <tr><td>The training objectives and outcomes are explicitly stated and understandable.</td><td><input type="radio" name="d3" value="1"/></td><td><input type="radio" name="d3" value="2"/></td><td><input type="radio" name="d3" value="3"/></td><td><input type="radio" name="d3" value="4"/></td><td><input type="radio" name="d3" value="5"/></td></tr>
+        <tr><td>The course provided the knowledge and skills I need to accomplish the job for which I am receiving training.</td><td><input type="radio" name="d4" value="1"/></td><td><input type="radio" name="d4" value="2"/></td><td><input type="radio" name="d4" value="3"/></td><td><input type="radio" name="d4" value="4"/></td><td><input type="radio" name="d4" value="5"/></td></tr>
+        <tr><td>Materials are presented in realistic job scenarios that I can easily transfer to my job.</td><td><input type="radio" name="d5" value="1"/></td><td><input type="radio" name="d5" value="2"/></td><td><input type="radio" name="d5" value="3"/></td><td><input type="radio" name="d5" value="4"/></td><td><input type="radio" name="d5" value="5"/></td></tr>
+        <tr><td>Based on the training, I am fully capable of implementing the skills I learned.</td><td><input type="radio" name="d6" value="1"/></td><td><input type="radio" name="d6" value="2"/></td><td><input type="radio" name="d6" value="3"/></td><td><input type="radio" name="d6" value="4"/></td><td><input type="radio" name="d6" value="5"/></td></tr>
+        <tr><td>The course content is appropriate for someone within my professional field.</td><td><input type="radio" name="d7" value="1"/></td><td><input type="radio" name="d7" value="2"/></td><td><input type="radio" name="d7" value="3"/></td><td><input type="radio" name="d7" value="4"/></td><td><input type="radio" name="d7" value="5"/></td></tr>
+        <tr><td>The course content is appropriate for someone with my level of experience.</td><td><input type="radio" name="d8" value="1"/></td><td><input type="radio" name="d8" value="2"/></td><td><input type="radio" name="d8" value="3"/></td><td><input type="radio" name="d8" value="4"/></td><td><input type="radio" name="d8" value="5"/></td></tr>
+        <tr><td>Overall, the course met my needs and expectations.</td><td><input type="radio" name="d9" value="1"/></td><td><input type="radio" name="d9" value="2"/></td><td><input type="radio" name="d9" value="3"/></td><td><input type="radio" name="d9" value="4"/></td><td><input type="radio" name="d9" value="5"/></td></tr>
+        <tr><td>Overall, the course is effective in meeting the goals and objectives of the course.</td><td><input type="radio" name="d10" value="1"/></td><td><input type="radio" name="d10" value="2"/></td><td><input type="radio" name="d10" value="3"/></td><td><input type="radio" name="d10" value="4"/></td><td><input type="radio" name="d10" value="5"/></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION E -->
+  <div class="card">
+    <div class="section-label">Section E: Instructor Evaluation (Completed by Attendees)</div>
+    <table class="likert-table">
+      <thead><tr><th>Statement</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+      <tbody>
+        <tr><td>The instructor(s) were prepared.</td><td><input type="radio" name="e1" value="1"/></td><td><input type="radio" name="e1" value="2"/></td><td><input type="radio" name="e1" value="3"/></td><td><input type="radio" name="e1" value="4"/></td><td><input type="radio" name="e1" value="5"/></td></tr>
+        <tr><td>The instructor(s) used instructional time effectively.</td><td><input type="radio" name="e2" value="1"/></td><td><input type="radio" name="e2" value="2"/></td><td><input type="radio" name="e2" value="3"/></td><td><input type="radio" name="e2" value="4"/></td><td><input type="radio" name="e2" value="5"/></td></tr>
+        <tr><td>The instructor(s) demonstrated thorough knowledge of course content.</td><td><input type="radio" name="e3" value="1"/></td><td><input type="radio" name="e3" value="2"/></td><td><input type="radio" name="e3" value="3"/></td><td><input type="radio" name="e3" value="4"/></td><td><input type="radio" name="e3" value="5"/></td></tr>
+        <tr><td>The instructor(s) were able to answer questions clearly and understandably.</td><td><input type="radio" name="e4" value="1"/></td><td><input type="radio" name="e4" value="2"/></td><td><input type="radio" name="e4" value="3"/></td><td><input type="radio" name="e4" value="4"/></td><td><input type="radio" name="e4" value="5"/></td></tr>
+        <tr><td>The instructor(s) conducted the course in a skilled and competent manner.</td><td><input type="radio" name="e5" value="1"/></td><td><input type="radio" name="e5" value="2"/></td><td><input type="radio" name="e5" value="3"/></td><td><input type="radio" name="e5" value="4"/></td><td><input type="radio" name="e5" value="5"/></td></tr>
+        <tr><td>The instructor(s) encouraged student participation.</td><td><input type="radio" name="e6" value="1"/></td><td><input type="radio" name="e6" value="2"/></td><td><input type="radio" name="e6" value="3"/></td><td><input type="radio" name="e6" value="4"/></td><td><input type="radio" name="e6" value="5"/></td></tr>
+        <tr><td>The instructor(s) fostered a positive and stimulating learning environment.</td><td><input type="radio" name="e7" value="1"/></td><td><input type="radio" name="e7" value="2"/></td><td><input type="radio" name="e7" value="3"/></td><td><input type="radio" name="e7" value="4"/></td><td><input type="radio" name="e7" value="5"/></td></tr>
+        <tr><td>The instructor(s) covered all of the course learning objectives.</td><td><input type="radio" name="e8" value="1"/></td><td><input type="radio" name="e8" value="2"/></td><td><input type="radio" name="e8" value="3"/></td><td><input type="radio" name="e8" value="4"/></td><td><input type="radio" name="e8" value="5"/></td></tr>
+        <tr><td>Overall, the performance of the instructor(s) met my needs and expectations.</td><td><input type="radio" name="e9" value="1"/></td><td><input type="radio" name="e9" value="2"/></td><td><input type="radio" name="e9" value="3"/></td><td><input type="radio" name="e9" value="4"/></td><td><input type="radio" name="e9" value="5"/></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- INSTRUCTOR NOTES -->
+  <div class="card">
+    <div class="section-label">Instructor Notes (Optional)</div>
+    <div class="field"><label>Instructor Observations</label><textarea id="instructor_notes" placeholder="Any observations, issues, or recommendations for this delivery..."></textarea></div>
+    <div class="field"><label>Submitting Instructor Name</label><input type="text" id="submitting_instructor"/></div>
+  </div>
+
+  <button class="btn btn-primary" id="btn-submit">Submit Instructor Report</button>
+
+  </div><!-- /form-area -->
+
+  <div id="success-area" class="hidden">
+    <div class="card"><div class="success-box">
+      <div class="check">&#10003;</div>
+      <h2>Instructor Report Submitted</h2>
+      <p>The report for this session has been recorded. You can close this page.</p>
+      <p id="receipt" style="margin-top:14px;font-family:monospace;color:var(--navy);font-weight:700"></p>
+    </div></div>
+  </div>
+
+</main>
+
+<script>
+const CONFIG = {
+  ENDPOINT_URL: "https://script.google.com/macros/s/AKfycbz47iaqo2ITLSjRfMoVp3XlzMtCHDt3YYJdR90H67QAsF7eOaIHNNvb2K8YaRSYYKKL-g/exec",
+  FORM_TYPE: "instructor_report"
+};
+
+// Populate 0-5 Likert dropdowns in 0.25 increments
+["pre_score","post_score"].forEach(id => {
+  const sel = document.getElementById(id);
+  for (let v = 0; v <= 5; v += 0.25) {
+    const opt = document.createElement("option");
+    opt.value = v.toFixed(2); opt.textContent = v.toFixed(2);
+    sel.appendChild(opt);
+  }
+});
+
+// Auto-fill date from session selection
+const sessionMeta = {
+  "DEESC-042226":{date:"2026-04-22",city:"Washington",state:"DC",facility:""},
+  "DEESC-042826":{date:"2026-04-28",city:"Anaheim",state:"CA",facility:"Anaheim PD Sub-Station"},
+  "DEESC-080526":{date:"2026-08-05",city:"Online",state:"",facility:"Online"},
+  "DEESC-082026":{date:"2026-08-20",city:"Online",state:"",facility:"Online"},
+  "DEESC-082826":{date:"2026-08-28",city:"Online",state:"",facility:"Online"},
+  "DEESC-092926":{date:"2026-09-29",city:"Online",state:"",facility:"Online"},
+  "DEESC-101226":{date:"2026-10-12",city:"Online",state:"",facility:"Online"},
+  "DEESC-102626":{date:"2026-10-26",city:"Online",state:"",facility:"Online"},
+  "DEESC-102926":{date:"2026-10-29",city:"Online",state:"",facility:"Online"},
+  "DEESC-111626":{date:"2026-11-16",city:"Online",state:"",facility:"Online"},
+  "DEESC-113026":{date:"2026-11-30",city:"Online",state:"",facility:"Online"},
+  "DEESC-120926":{date:"2026-12-09",city:"Online",state:"",facility:"Online"},
+  "DEESC-123026":{date:"2026-12-30",city:"Online",state:"",facility:"Online"},
+  "DEESC-010627":{date:"2027-01-06",city:"Online",state:"",facility:"Online"},
+  "DEESC-012227":{date:"2027-01-22",city:"Online",state:"",facility:"Online"},
+  "DEESC-012527":{date:"2027-01-25",city:"Cobb County",state:"GA",facility:""},
+  "DEESC-020427":{date:"2027-02-04",city:"Online",state:"",facility:"Online"},
+  "DEESC-021727":{date:"2027-02-17",city:"Online",state:"",facility:"Online"},
+  "DEESC-022327":{date:"2027-02-23",city:"El Paso",state:"TX",facility:""},
+  "DEESC-031127":{date:"2027-03-11",city:"Online",state:"",facility:"Online"},
+  "DEESC-031927":{date:"2027-03-19",city:"Online",state:"",facility:"Online"},
+  "DEESC-032427":{date:"2027-03-24",city:"Online",state:"",facility:"Online"},
+  "DEESC-040827":{date:"2027-04-08",city:"Online",state:"",facility:"Online"},
+  "DEESC-041327":{date:"2027-04-13",city:"Online",state:"",facility:"Online"},
+  "DEESC-042627":{date:"2027-04-26",city:"Maui",state:"HI",facility:""},
+  "DEESC-050527":{date:"2027-05-05",city:"Online",state:"",facility:"Online"},
+  "DEESC-052127":{date:"2027-05-21",city:"Online",state:"",facility:"Online"},
+  "DEESC-060327":{date:"2027-06-03",city:"Online",state:"",facility:"Online"},
+  "DEESC-061127":{date:"2027-06-11",city:"Online",state:"",facility:"Online"},
+  "DEESC-062827":{date:"2027-06-28",city:"Rockville",state:"MD",facility:"Montgomery College"}
+};
+
+document.getElementById("session_code").addEventListener("change", function(){
+  const code = this.value;
+  const meta = sessionMeta[code];
+  if (meta) {
+    document.getElementById("start_date").value = meta.date;
+    document.getElementById("end_date").value = meta.date;
+    document.getElementById("city").value = meta.city;
+    document.getElementById("state").value = meta.state;
+    document.getElementById("facility").value = meta.facility;
+    if (meta.city === "Online") {
+      document.getElementById("course_type").value = "Live online";
+    } else {
+      document.getElementById("course_type").value = "In-person";
+    }
+  }
+});
+
+function showError(msg) {
+  const b = document.getElementById("error-banner");
+  b.textContent = msg; b.style.display = "block";
+  setTimeout(() => b.style.display = "none", 6000);
+}
+
+document.getElementById("btn-submit").addEventListener("click", async function(){
+  const btn = this; btn.disabled = true; btn.textContent = "Submitting...";
+  const sess = document.getElementById("session_code").value;
+  if (!sess) { showError("Please select a session."); btn.disabled = false; btn.textContent = "Submit Instructor Report"; return; }
+
+  // Collect all radio values for D and E
+  const likert = {};
+  for (let i = 1; i <= 10; i++) {
+    const r = document.querySelector('input[name="d'+i+'"]:checked');
+    likert["d"+i] = r ? r.value : "";
+  }
+  for (let i = 1; i <= 9; i++) {
+    const r = document.querySelector('input[name="e'+i+'"]:checked');
+    likert["e"+i] = r ? r.value : "";
+  }
+
+  const payload = {
+    form_type: "instructor_report",
+    session_code: sess,
+    submitted_at: new Date().toISOString(),
+    course_title: document.getElementById("course_title").value,
+    course_type: document.getElementById("course_type").value,
+    start_date: document.getElementById("start_date").value,
+    end_date: document.getElementById("end_date").value,
+    city: document.getElementById("city").value,
+    state: document.getElementById("state").value,
+    facility: document.getElementById("facility").value,
+    host_agency: document.getElementById("host_agency").value,
+    trainers: document.getElementById("trainers").value,
+    agencies: document.getElementById("agencies").value,
+    total_trained: document.getElementById("total_trained").value,
+    cnt_nt_line: document.getElementById("cnt_nt_line").value,
+    cnt_nt_mid: document.getElementById("cnt_nt_mid").value,
+    cnt_nt_exec: document.getElementById("cnt_nt_exec").value,
+    cnt_nonsworn: document.getElementById("cnt_nonsworn").value,
+    cnt_tr_line: document.getElementById("cnt_tr_line").value,
+    cnt_tr_mid: document.getElementById("cnt_tr_mid").value,
+    cnt_tr_exec: document.getElementById("cnt_tr_exec").value,
+    cnt_community: document.getElementById("cnt_community").value,
+    cnt_local_gov: document.getElementById("cnt_local_gov").value,
+    cnt_federal: document.getElementById("cnt_federal").value,
+    pre_score: document.getElementById("pre_score").value,
+    post_score: document.getElementById("post_score").value,
+    likert: likert,
+    instructor_notes: document.getElementById("instructor_notes").value,
+    submitting_instructor: document.getElementById("submitting_instructor").value
+  };
+
+  try {
+    if (CONFIG.ENDPOINT_URL && CONFIG.ENDPOINT_URL.indexOf("REPLACE_WITH") === -1) {
+      await fetch(CONFIG.ENDPOINT_URL, {
+        method: "POST", mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+    } else { console.warn("ENDPOINT_URL not configured:", payload); }
+    document.getElementById("form-area").classList.add("hidden");
+    document.getElementById("success-area").classList.remove("hidden");
+    document.getElementById("receipt").textContent = "INSTRUCTOR-" + sess;
+    window.scrollTo({top:0,behavior:"smooth"});
+  } catch(e) {
+    console.error(e);
+    showError("Submission failed. Please try again.");
+    btn.disabled = false; btn.textContent = "Submit Instructor Report";
+  }
+});
+</script>
+</body>
+</html>
