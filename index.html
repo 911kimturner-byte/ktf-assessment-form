@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#0A2540" />
+<title>The Kim Turner Foundation | Training Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0A2540; --navy-soft: #133358; --crimson: #A01B2A; --crimson-dark: #7E1421;
+    --paper: #FAFAF7; --paper-warm: #F4F1EA; --ink: #1A1A1A; --muted: #6B6B6B;
+    --line: #D9D5CB; --gold: #B8923B; --success: #2F6B3A;
+    --blue-soft: #E8F0FE; --blue-border: #B6D0F7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--paper); color: var(--ink); font-family: 'Public Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  body { min-height: 100vh; padding: 0 0 80px; }
+  .topbar { background: var(--navy); color: var(--paper); padding: 16px 20px; display: flex; align-items: center; gap: 16px; border-bottom: 3px solid var(--crimson); }
+  .topbar .logo-mark { flex-shrink: 0; }
+  .topbar .logo-mark svg { display: block; height: 44px; width: auto; }
+  .topbar .divider { width: 1px; height: 36px; background: rgba(255,255,255,0.22); flex-shrink: 0; }
+  .topbar .org { font-family: 'Public Sans', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.82; line-height: 1.4; }
+  .topbar .org a { color: inherit; text-decoration: none; display: block; font-size: 11px; margin-top: 2px; letter-spacing: 0.04em; opacity: 0.7; text-transform: none; }
+  .topbar .org a:hover { opacity: 1; text-decoration: underline; }
+  .container { max-width: 720px; margin: 0 auto; padding: 28px 20px 0; }
+  .hero { border: 1px solid var(--line); background: #fff; padding: 28px 26px; margin-bottom: 22px; position: relative; }
+  .hero::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--crimson); }
+  .hero .eyebrow { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--crimson); font-weight: 700; margin-bottom: 10px; }
+  .hero h1 { font-family: 'Lora', serif; font-weight: 600; font-size: 26px; color: var(--navy); line-height: 1.2; margin-bottom: 12px; }
+  .hero p { color: var(--muted); font-size: 15px; }
+  .hero .meta { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line); display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; color: var(--muted); }
+  .hero .meta span strong { color: var(--ink); font-weight: 600; }
+  .progress-row { display: flex; align-items: center; gap: 8px; margin-bottom: 22px; }
+  .pip { width: 28px; height: 28px; border-radius: 50%; background: var(--paper-warm); color: var(--muted); font-size: 12px; font-weight: 700; display: grid; place-items: center; transition: all 0.25s; }
+  .pip.active { background: var(--navy); color: #fff; transform: scale(1.12); }
+  .pip.done { background: var(--success); color: #fff; }
+  .pip-line { flex: 1; height: 2px; background: var(--line); }
+  .card { background: #fff; border: 1px solid var(--line); padding: 26px 24px; margin-bottom: 18px; }
+  .card h2 { font-family: 'Lora', serif; font-weight: 600; font-size: 20px; color: var(--navy); margin-bottom: 6px; }
+  .card .lede { color: var(--muted); font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  .field .hint { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+  .field input[type="text"], .field input[type="email"], .field select, .field textarea { width: 100%; padding: 11px 14px; font-size: 15px; font-family: inherit; border: 1px solid var(--line); background: var(--paper); transition: border 0.2s; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--navy); }
+  .field textarea { min-height: 80px; resize: vertical; }
+  .q-group { margin-bottom: 28px; }
+  .q-group .q-label { font-weight: 600; font-size: 15px; margin-bottom: 10px; line-height: 1.4; }
+  .q-group .q-label .q-num { color: var(--crimson); font-weight: 700; margin-right: 4px; }
+  .opt { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border: 1px solid var(--line); margin-bottom: 6px; cursor: pointer; transition: border 0.15s, background 0.15s; font-size: 14px; line-height: 1.45; }
+  .opt:hover { border-color: var(--navy-soft); background: var(--paper-warm); }
+  .opt.selected { border-color: var(--navy); background: var(--blue-soft); }
+  .opt input { margin-top: 2px; flex-shrink: 0; }
+  .likert-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 10px; }
+  .likert-row .opt { justify-content: center; text-align: center; padding: 10px 4px; font-size: 13px; }
+  .section-divider { border: none; border-top: 2px solid var(--line); margin: 28px 0; }
+  .mode-toggle { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+  .mode-btn { padding: 18px 14px; text-align: center; border: 2px solid var(--line); cursor: pointer; transition: all 0.2s; background: #fff; }
+  .mode-btn:hover { border-color: var(--navy-soft); }
+  .mode-btn.selected { border-color: var(--navy); background: var(--navy); color: #fff; }
+  .mode-btn .mode-icon { font-size: 22px; margin-bottom: 4px; }
+  .mode-btn .mode-name { font-weight: 700; font-size: 14px; }
+  .mode-btn .mode-desc { font-size: 11px; opacity: 0.7; margin-top: 2px; }
+  .actions { display: flex; gap: 10px; margin-top: 24px; }
+  .btn { padding: 13px 26px; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer; border: none; transition: background 0.2s, transform 0.1s; }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary { background: var(--navy); color: #fff; flex: 1; }
+  .btn-primary:hover { background: var(--navy-soft); }
+  .btn-primary:disabled { background: var(--line); color: var(--muted); cursor: not-allowed; }
+  .btn-back { background: transparent; border: 1px solid var(--line); color: var(--muted); }
+  .hidden { display: none !important; }
+  .error-banner { background: #FEE2E2; border: 1px solid #FECACA; color: #991B1B; padding: 12px 16px; margin-bottom: 16px; font-size: 14px; font-weight: 500; }
+  .confirm-box { text-align: center; padding: 40px 20px; }
+  .confirm-box .check { width: 56px; height: 56px; border-radius: 50%; background: var(--success); color: #fff; display: inline-grid; place-items: center; font-size: 28px; margin-bottom: 16px; }
+  .confirm-box h2 { font-family: 'Lora', serif; color: var(--navy); margin-bottom: 10px; }
+  .confirm-box p { color: var(--muted); font-size: 15px; }
+  .confirm-box .receipt { background: var(--paper-warm); padding: 10px 18px; display: inline-block; font-family: monospace; font-size: 14px; margin-top: 14px; letter-spacing: 0.04em; }
+  .confirm-box .next-step { margin-top: 20px; padding: 14px 18px; background: var(--blue-soft); border: 1px solid var(--blue-border); font-size: 14px; text-align: left; line-height: 1.5; }
+  @media (max-width: 600px) {
+    .topbar { padding: 12px 16px; gap: 12px; }
+    .topbar .logo-mark svg { height: 34px; }
+    .topbar .divider { height: 28px; }
+    .topbar .org { font-size: 11px; }
+    .container { padding: 18px 14px 0; }
+    .hero { padding: 22px 18px; }
+    .hero h1 { font-size: 22px; }
+    .card { padding: 20px 16px; }
+    .mode-toggle { grid-template-columns: 1fr; }
+    .likert-row .opt { padding: 8px 2px; font-size: 11px; }
+    .actions { flex-direction: column-reverse; }
+    .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458.28 152.37" aria-label="The Kim Turner Foundation"><defs><style>.ktf-f{fill:#fff}.ktf-l{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:2.5px}</style></defs><g><path class="ktf-f" d="M73.9,25.54H85.17V58h.35L98.39,25.54h11.23L95.26,60.38l16,39.45h-12L85.52,64.47h-.35V99.83H73.9Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M117.62,25.54h11.26V99.83H117.62Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M141.59,25.54h14.7l7.13,28.75c.75,3.19,1.35,6.23,1.78,9.11s.86,5.61,1.27,8.16h.34q.62-3.82,1.27-8.16t1.78-9.11l7.35-28.75h14.4V99.83H181.08V75.25c0-3.76,0-7.39.11-10.87s.17-6.68.28-9.59.25-5.49.39-7.72.28-4,.4-5.31h-.83l-11.22,48.5h-7.14l-11.31-48.5h-.82q.17,2,.39,5.31c.14,2.23.27,4.81.39,7.72s.21,6.11.28,9.59.11,7.11.11,10.87V99.83H141.59Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M230.23,34.41h-12V25.54h35.15v8.87H241.5V99.83H230.23Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M260.77,25.54h11.35V80a40,40,0,0,0,.35,5.78,11,11,0,0,0,1.11,3.68,4.53,4.53,0,0,0,1.95,2,6.31,6.31,0,0,0,2.85.59,6.59,6.59,0,0,0,2.9-.59,4.76,4.76,0,0,0,2-2,11.31,11.31,0,0,0,1.22-3.68A34.22,34.22,0,0,0,285,80V25.54h11.22V77a43,43,0,0,1-.87,9.31,24.65,24.65,0,0,1-2.3,6.48,14.05,14.05,0,0,1-3.29,4.14,14.64,14.64,0,0,1-3.82,2.32,14.91,14.91,0,0,1-3.94,1,33.56,33.56,0,0,1-3.57.21,33,33,0,0,1-3.54-.21,14.63,14.63,0,0,1-7.68-3.35,14.32,14.32,0,0,1-3.26-4.14,23.94,23.94,0,0,1-2.28-6.46,43.66,43.66,0,0,1-.85-9.33Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M308.61,25.54h12.23c1.39,0,2.92.06,4.59.17a26.55,26.55,0,0,1,5,.85,20.22,20.22,0,0,1,4.83,2,14.25,14.25,0,0,1,4.13,3.7,18.51,18.51,0,0,1,2.89,5.89,29.43,29.43,0,0,1,1.09,8.59v1.87q0,8.49-2.44,13.81a15.23,15.23,0,0,1-7.17,7.68l11.91,29.71H333.76L323.88,72h-4.22V99.83H308.61ZM321.36,63.9a16.76,16.76,0,0,0,5-.65,6.9,6.9,0,0,0,3.31-2.2A9.6,9.6,0,0,0,331.49,57a29.25,29.25,0,0,0,.57-6.28V44.81a21,21,0,0,0-.52-5,7.86,7.86,0,0,0-1.76-3.44,7.51,7.51,0,0,0-3.29-2,17.27,17.27,0,0,0-5.13-.65h-1.7V63.9Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M354.2,25.54h9.13l18,49.71h.26c-.08-1.15-.2-2.45-.35-3.87s-.27-3-.39-4.85-.21-3.86-.3-6.15-.13-4.87-.13-7.74V25.54h10.09V99.83H381.3L363.38,51.42H363c.09,1.3.2,2.72.35,4.24s.27,3.31.39,5.37.22,4.46.3,7.2.13,6,.13,9.77V99.83h-10Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M403.22,25.54h27.53v8.87H414.49V56.64h12.57v8.87H414.49V91h16.7v8.87h-28Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M439.32,25.54h12.22c1.4,0,2.93.06,4.59.17a26.52,26.52,0,0,1,5,.85,20,20,0,0,1,4.82,2,14.28,14.28,0,0,1,4.14,3.7A18.72,18.72,0,0,1,473,38.17a29.77,29.77,0,0,1,1.09,8.59v1.87q0,8.49-2.44,13.81a15.25,15.25,0,0,1-7.18,7.68l11.92,29.71H464.46L454.59,72h-4.22V99.83H439.32ZM452.07,63.9a16.76,16.76,0,0,0,5-.65,7,7,0,0,0,3.31-2.2A9.73,9.73,0,0,0,462.2,57a29.25,29.25,0,0,0,.57-6.28V44.81a21,21,0,0,0-.52-5,7.77,7.77,0,0,0-1.77-3.44,7.41,7.41,0,0,0-3.28-2,17.27,17.27,0,0,0-5.13-.65h-1.7V63.9Z" transform="translate(-18.1 -25.54)"/></g><g><path class="ktf-f" d="M22.38,94.24v5.67h-4.2V83.25h4.2V88.9h31v5.34Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M18.18,71.2V65.86H32.92V59.53H18.18V54.19H53.39v5.34H37.12v6.33H53.39V71.2Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M18.18,39.69v-13h4.2v7.71H32.92v-6h4.2v6H49.18V26.43h4.21V39.69Z" transform="translate(-18.1 -25.54)"/></g><g><path class="ktf-f" d="M18.19,134.22H34.75v5.18h-10v12.95h7.83v5.18H24.76v20H18.19Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M72.6,177.91a16.75,16.75,0,0,1-2.25-.16,8.59,8.59,0,0,1-2.41-.7,8.94,8.94,0,0,1-2.3-1.51,9.29,9.29,0,0,1-2-2.57A15,15,0,0,1,62.34,169a26.74,26.74,0,0,1-.51-5.6V148.09a25.74,25.74,0,0,1,.52-5.59,14.64,14.64,0,0,1,1.38-3.9,8.44,8.44,0,0,1,4.27-4,9.4,9.4,0,0,1,2.4-.64,16,16,0,0,1,2.2-.16,19.14,19.14,0,0,1,2.15.14,9.7,9.7,0,0,1,2.35.61,8.36,8.36,0,0,1,2.3,1.4,8.47,8.47,0,0,1,2,2.51,15.21,15.21,0,0,1,1.38,3.93,26.3,26.3,0,0,1,.52,5.66v15.34a25.32,25.32,0,0,1-.53,5.54,15.75,15.75,0,0,1-1.4,3.93,8.84,8.84,0,0,1-2,2.59A9.68,9.68,0,0,1,77.05,177a8.43,8.43,0,0,1-2.34.73A15.27,15.27,0,0,1,72.6,177.91Zm0-4.94a4,4,0,0,0,1.69-.33,2.66,2.66,0,0,0,1.19-1.14,6.76,6.76,0,0,0,.71-2.15,19.3,19.3,0,0,0,.24-3.35V146.29a21,21,0,0,0-.24-3.47,7.2,7.2,0,0,0-.71-2.24,2.78,2.78,0,0,0-1.19-1.21A3.73,3.73,0,0,0,72.6,139a3.89,3.89,0,0,0-1.72.35,2.84,2.84,0,0,0-1.22,1.21,6.93,6.93,0,0,0-.72,2.24,21,21,0,0,0-.24,3.47V166a19.3,19.3,0,0,0,.24,3.35,6.51,6.51,0,0,0,.72,2.15,2.72,2.72,0,0,0,1.22,1.14A4.19,4.19,0,0,0,72.6,173Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M113.23,134.22h6.62V166a22.55,22.55,0,0,0,.2,3.37,6.39,6.39,0,0,0,.64,2.14,2.66,2.66,0,0,0,1.15,1.15,3.81,3.81,0,0,0,1.66.34,4,4,0,0,0,1.68-.34,2.74,2.74,0,0,0,1.19-1.15,6.3,6.3,0,0,0,.71-2.14,19.51,19.51,0,0,0,.25-3.37V134.22h6.54v30a25,25,0,0,1-.51,5.43,14.73,14.73,0,0,1-1.34,3.77,8.1,8.1,0,0,1-1.92,2.41,8.62,8.62,0,0,1-2.23,1.36,8.92,8.92,0,0,1-2.29.6,20.26,20.26,0,0,1-2.08.12,19.63,19.63,0,0,1-2.07-.12,8.78,8.78,0,0,1-2.27-.6,8.52,8.52,0,0,1-2.21-1.36,8.22,8.22,0,0,1-1.9-2.41,14.29,14.29,0,0,1-1.33-3.76,25.72,25.72,0,0,1-.49-5.44Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M165,134.22h5.32l10.5,29H181c0-.68-.12-1.43-.2-2.26s-.16-1.77-.23-2.83-.13-2.25-.18-3.59-.07-2.84-.07-4.51v-15.8h5.88v43.31H180.8l-10.44-28.22h-.21c0,.76.12,1.59.21,2.47s.16,1.93.22,3.14.13,2.59.18,4.19.08,3.5.08,5.69v12.73H165Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M217.47,134.22h6.82q1.54,0,3.21.09a14.17,14.17,0,0,1,3.24.55,10.28,10.28,0,0,1,3,1.41,8.72,8.72,0,0,1,2.47,2.66,14.46,14.46,0,0,1,1.68,4.31,27.37,27.37,0,0,1,.63,6.35v12.58a27.52,27.52,0,0,1-.63,6.36,14.25,14.25,0,0,1-1.68,4.31,8.79,8.79,0,0,1-2.47,2.65,10.82,10.82,0,0,1-3,1.41,14.73,14.73,0,0,1-3.24.54q-1.67.09-3.21.09h-6.82Zm8.24,38.72a8.17,8.17,0,0,0,2.93-.45,3.6,3.6,0,0,0,1.82-1.61,8.41,8.41,0,0,0,.93-3.15,40.82,40.82,0,0,0,.25-5V149.26a40.82,40.82,0,0,0-.25-5,8.41,8.41,0,0,0-.93-3.15,3.6,3.6,0,0,0-1.82-1.61,8.17,8.17,0,0,0-2.93-.45H224v33.92Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M273,134.22h7.55l8,43.31H282l-1.19-7.76h-7.91l-1.14,7.76H265Zm7,30.61-3-21.58h-.28l-3.07,21.58Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M320.67,139.4h-7v-5.18h20.49v5.18h-6.95v38.13h-6.57Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M362.51,134.22h6.57v43.31h-6.57Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M410,177.91a16.78,16.78,0,0,1-2.26-.16,8.59,8.59,0,0,1-2.41-.7,8.89,8.89,0,0,1-2.29-1.51,9.12,9.12,0,0,1-2-2.57,15.36,15.36,0,0,1-1.35-3.94,26.74,26.74,0,0,1-.51-5.6V148.09a25.74,25.74,0,0,1,.52-5.59,15,15,0,0,1,1.38-3.9,8.64,8.64,0,0,1,2-2.52,8.47,8.47,0,0,1,2.3-1.44,9.51,9.51,0,0,1,2.4-.64,16.07,16.07,0,0,1,2.21-.16,19.12,19.12,0,0,1,2.14.14,9.9,9.9,0,0,1,2.36.61,8.35,8.35,0,0,1,4.27,3.91,15.21,15.21,0,0,1,1.38,3.93,26.3,26.3,0,0,1,.52,5.66v15.34a25.32,25.32,0,0,1-.53,5.54,15.75,15.75,0,0,1-1.4,3.93,8.84,8.84,0,0,1-2,2.59,9.84,9.84,0,0,1-2.3,1.52,8.6,8.6,0,0,1-2.35.73A15.26,15.26,0,0,1,410,177.91Zm0-4.94a4,4,0,0,0,1.68-.33,2.66,2.66,0,0,0,1.19-1.14,6.52,6.52,0,0,0,.71-2.15,19.3,19.3,0,0,0,.24-3.35V146.29a21,21,0,0,0-.24-3.47,7,7,0,0,0-.71-2.24,2.78,2.78,0,0,0-1.19-1.21A3.71,3.71,0,0,0,410,139a3.9,3.9,0,0,0-1.73.35,2.84,2.84,0,0,0-1.22,1.21,6.93,6.93,0,0,0-.72,2.24,21,21,0,0,0-.24,3.47V166a19.3,19.3,0,0,0,.24,3.35,6.51,6.51,0,0,0,.72,2.15,2.72,2.72,0,0,0,1.22,1.14A4.2,4.2,0,0,0,410,173Z" transform="translate(-18.1 -25.54)"/><path class="ktf-f" d="M450.73,134.22h5.32l10.5,29h.16c-.06-.68-.12-1.43-.21-2.26s-.16-1.77-.23-2.83-.12-2.25-.17-3.59S466,151.69,466,150v-15.8h5.88v43.31h-5.37l-10.45-28.22h-.2c.05.76.12,1.59.2,2.47s.16,1.93.23,3.14.13,2.59.18,4.19.07,3.5.07,5.69v12.73h-5.83Z" transform="translate(-18.1 -25.54)"/></g><line class="ktf-l" y1="92.93" x2="458.14" y2="92.93"/></svg></div>
+  <div class="divider"></div>
+  <div class="org">Training Assessment<a href="http://www.thektf.com" target="_blank" rel="noopener">www.thektf.com</a></div>
+</header>
+
+<main class="container">
+  <div class="hero">
+    <div class="eyebrow">The Kim Turner Foundation</div>
+    <h1>De-escalation Training for 9-1-1 Dispatchers</h1>
+    <p>This assessment measures knowledge, confidence, and skill application across three checkpoints: before training, immediately after training, and 30 days following training.</p>
+    <div class="meta">
+      <span>Format: <strong>8-Hour Course</strong></span>
+      <span>Questions: <strong>7 Knowledge + 3 Confidence</strong></span>
+      <span>Phases: <strong>Pre | Post | 30-Day</strong></span>
+    </div>
+  </div>
+
+  <div class="progress-row">
+    <div class="pip active" data-pip="1">1</div><div class="pip-line"></div>
+    <div class="pip" data-pip="2">2</div><div class="pip-line"></div>
+    <div class="pip" data-pip="3">3</div><div class="pip-line"></div>
+    <div class="pip" data-pip="4">4</div>
+  </div>
+
+  <div id="error-banner" class="error-banner hidden"></div>
+
+  <!-- STEP 1: IDENTITY -->
+  <div id="step-1">
+    <div class="card">
+      <h2>Participant Identification</h2>
+      <p class="lede">Select your class date, enter your work email, and choose a 4-digit Participant ID. Use the same email and ID for all phases of this assessment.</p>
+      <div class="field">
+        <label for="session-code">Class Date</label>
+        <select id="session-code">
+          <option value="">Select your class date...</option>
+          <optgroup label="2026">
+            <option value="DEESC-042226">Apr 22, 2026 | Washington, DC (In Person)</option>
+            <option value="DEESC-042826">Apr 28, 2026 | Anaheim (In Person)</option>
+            <option value="DEESC-080526">Aug 5, 2026 | Online</option>
+            <option value="DEESC-082026">Aug 20, 2026 | Online</option>
+            <option value="DEESC-082826">Aug 28, 2026 | Online</option>
+            <option value="DEESC-092926">Sep 29, 2026 | Online</option>
+            <option value="DEESC-101226">Oct 12, 2026 | Online</option>
+            <option value="DEESC-102626">Oct 26, 2026 | Online</option>
+            <option value="DEESC-102926">Oct 29, 2026 | Online</option>
+            <option value="DEESC-111626">Nov 16, 2026 | Online</option>
+            <option value="DEESC-113026">Nov 30, 2026 | Online</option>
+            <option value="DEESC-120926">Dec 9, 2026 | Online</option>
+            <option value="DEESC-123026">Dec 30, 2026 | Online</option>
+          </optgroup>
+          <optgroup label="2027">
+            <option value="DEESC-010627">Jan 6, 2027 | Online</option>
+            <option value="DEESC-012227">Jan 22, 2027 | Online</option>
+            <option value="DEESC-012527">Jan 25, 2027 | Cobb County, GA (In Person)</option>
+            <option value="DEESC-020427">Feb 4, 2027 | Online</option>
+            <option value="DEESC-021727">Feb 17, 2027 | Online</option>
+            <option value="DEESC-022327">Feb 23, 2027 | El Paso (In Person)</option>
+            <option value="DEESC-031127">Mar 11, 2027 | Online</option>
+            <option value="DEESC-031927">Mar 19, 2027 | Online</option>
+            <option value="DEESC-032427">Mar 24, 2027 | Online</option>
+            <option value="DEESC-040827">Apr 8, 2027 | Online</option>
+            <option value="DEESC-041327">Apr 13, 2027 | Online</option>
+            <option value="DEESC-042627">Apr 26, 2027 | Maui (In Person)</option>
+            <option value="DEESC-050527">May 5, 2027 | Online</option>
+            <option value="DEESC-052127">May 21, 2027 | Online</option>
+            <option value="DEESC-060327">Jun 3, 2027 | Online</option>
+            <option value="DEESC-061127">Jun 11, 2027 | Online</option>
+            <option value="DEESC-062827">Jun 28, 2027 | Montgomery College, MD (In Person)</option>
+          </optgroup>
+          <option value="OTHER">Other (enter session code manually)</option>
+        </select>
+      </div>
+      <div class="field hidden" id="manual-session-wrap">
+        <label for="manual-session">Session Code</label>
+        <div class="hint">Enter the code provided by your instructor.</div>
+        <input type="text" id="manual-session" autocomplete="off" spellcheck="false" />
+      </div>
+      <div class="field">
+        <label for="work-email">Work Email</label>
+        <div class="hint">Used to match your responses across all assessment phases. Your email will not be shared outside the Foundation.</div>
+        <input type="email" id="work-email" placeholder="name@agency.gov" autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="participant-id">4-Digit Participant ID</label>
+        <div class="hint">Choose any 4-digit number and remember it. Use the same ID for every phase.</div>
+        <input type="text" id="participant-id" maxlength="4" pattern="[0-9]{4}" inputmode="numeric" autocomplete="off" placeholder="e.g. 4821" />
+      </div>
+      <div class="actions"><button class="btn btn-primary" id="btn-step1-next">Continue</button></div>
+    </div>
+  </div>
+
+  <!-- STEP 2: MODE -->
+  <div id="step-2" class="hidden">
+    <div class="card">
+      <h2>Assessment Phase</h2>
+      <p class="lede">Select the phase that matches where you are in the training process.</p>
+      <div class="mode-toggle">
+        <div class="mode-btn" data-mode="pre"><div class="mode-icon">&#9312;</div><div class="mode-name">Pre-Test</div><div class="mode-desc">Before training begins</div></div>
+        <div class="mode-btn" data-mode="post"><div class="mode-icon">&#9313;</div><div class="mode-name">Post-Test</div><div class="mode-desc">After training ends</div></div>
+        <div class="mode-btn" data-mode="followup"><div class="mode-icon">&#9314;</div><div class="mode-name">30-Day Follow-Up</div><div class="mode-desc">Retention check</div></div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-back" id="btn-step2-back">Back</button>
+        <button class="btn btn-primary" id="btn-step2-next" disabled>Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: ASSESSMENT -->
+  <div id="step-3" class="hidden">
+    <div class="card">
+      <h2 id="assess-heading">Assessment</h2>
+      <p class="lede" id="assess-lede"></p>
+
+      <!-- PRE ONLY: DEMOGRAPHICS -->
+      <div id="panel-demographics" class="hidden">
+        <div class="field"><label for="agency_name">Agency / Organization Name</label><input type="text" id="agency_name" placeholder="e.g. Long Beach Communications" /></div>
+        <div class="q-group"><div class="q-label">Years of 9-1-1 / dispatch experience:</div>
+          <label class="opt"><input type="radio" name="years_experience" value="Less than 1 year" /> Less than 1 year</label>
+          <label class="opt"><input type="radio" name="years_experience" value="1-3 years" /> 1 to 3 years</label>
+          <label class="opt"><input type="radio" name="years_experience" value="4-7 years" /> 4 to 7 years</label>
+          <label class="opt"><input type="radio" name="years_experience" value="8-15 years" /> 8 to 15 years</label>
+          <label class="opt"><input type="radio" name="years_experience" value="16+ years" /> 16 or more years</label>
+        </div>
+        <div class="q-group"><div class="q-label">Primary role:</div>
+          <label class="opt"><input type="radio" name="role" value="Call-taker" /> Call-taker</label>
+          <label class="opt"><input type="radio" name="role" value="Dispatcher" /> Dispatcher</label>
+          <label class="opt"><input type="radio" name="role" value="Call-taker/Dispatcher" /> Call-taker / Dispatcher (dual role)</label>
+          <label class="opt"><input type="radio" name="role" value="Supervisor" /> Supervisor / Lead</label>
+          <label class="opt"><input type="radio" name="role" value="Manager/Director" /> Manager / Director</label>
+          <label class="opt"><input type="radio" name="role" value="Other" /> Other</label>
+        </div>
+        <div class="q-group"><div class="q-label">Agency type:</div>
+          <label class="opt"><input type="radio" name="agency_type" value="Municipal" /> Municipal</label>
+          <label class="opt"><input type="radio" name="agency_type" value="County" /> County</label>
+          <label class="opt"><input type="radio" name="agency_type" value="State" /> State</label>
+          <label class="opt"><input type="radio" name="agency_type" value="Consolidated/Regional" /> Consolidated / Regional</label>
+          <label class="opt"><input type="radio" name="agency_type" value="Federal" /> Federal</label>
+          <label class="opt"><input type="radio" name="agency_type" value="Other" /> Other</label>
+        </div>
+        <div class="q-group"><div class="q-label">Have you received formal de-escalation training before this course?</div>
+          <label class="opt"><input type="radio" name="prior_training" value="Yes" /> Yes</label>
+          <label class="opt"><input type="radio" name="prior_training" value="No" /> No</label>
+        </div>
+        <div class="q-group"><div class="q-label">How familiar are you with the LEAPS model before today?</div>
+          <label class="opt"><input type="radio" name="leaps_familiarity" value="Not at all" /> Not at all familiar</label>
+          <label class="opt"><input type="radio" name="leaps_familiarity" value="Heard of it" /> I have heard of it</label>
+          <label class="opt"><input type="radio" name="leaps_familiarity" value="Some knowledge" /> I have some knowledge of it</label>
+          <label class="opt"><input type="radio" name="leaps_familiarity" value="Trained in it" /> I have been trained in it previously</label>
+        </div>
+        <div class="q-group"><div class="q-label">Have you used verbal de-escalation techniques on a call in the last 30 days?</div>
+          <label class="opt"><input type="radio" name="baseline_behavior" value="Yes" /> Yes</label>
+          <label class="opt"><input type="radio" name="baseline_behavior" value="No" /> No</label>
+          <label class="opt"><input type="radio" name="baseline_behavior" value="Unsure" /> Unsure</label>
+        </div>
+        <hr class="section-divider" />
+      </div>
+
+      <!-- ALL: KNOWLEDGE (7 MCQs) -->
+      <div id="panel-knowledge">
+        <div class="q-group"><div class="q-label"><span class="q-num">Q1.</span> What does the LEAPS acronym stand for?</div>
+          <label class="opt"><input type="radio" name="q5_leaps" value="Listen, Empathize, Ask, Paraphrase, Summarize" /> Listen, Empathize, Ask, Paraphrase, Summarize</label>
+          <label class="opt"><input type="radio" name="q5_leaps" value="Lead, Engage, Assess, Protect, Serve" /> Lead, Engage, Assess, Protect, Serve</label>
+          <label class="opt"><input type="radio" name="q5_leaps" value="Listen, Evaluate, Advise, Plan, Support" /> Listen, Evaluate, Advise, Plan, Support</label>
+          <label class="opt"><input type="radio" name="q5_leaps" value="I am not sure" /> I am not sure</label>
+        </div>
+        <div class="q-group"><div class="q-label"><span class="q-num">Q2.</span> In the context of Verbal Judo, what is "empathy"?</div>
+          <label class="opt"><input type="radio" name="q6_empathy" value="Feeling the same emotion as the other person" /> Feeling the same emotion as the other person</label>
+          <label class="opt"><input type="radio" name="q6_empathy" value="Showing the caller you understand their perspective without necessarily sharing it" /> Showing the caller you understand their perspective without necessarily sharing it</label>
+          <label class="opt"><input type="radio" name="q6_empathy" value="Agreeing with the caller to keep them calm" /> Agreeing with the caller to keep them calm</label>
+          <label class="opt"><input type="radio" name="q6_empathy" value="I am not sure" /> I am not sure</label>
+        </div>
+        <div class="q-group"><div class="q-label"><span class="q-num">Q3.</span> A caller becomes verbally abusive. According to de-escalation principles, which response is most appropriate?</div>
+          <label class="opt"><input type="radio" name="q7_abusive" value="Hang up to protect yourself" /> Hang up to protect yourself</label>
+          <label class="opt"><input type="radio" name="q7_abusive" value="Match the caller's tone so they know you are serious" /> Match the caller's tone so they know you are serious</label>
+          <label class="opt"><input type="radio" name="q7_abusive" value="Deflect the insult, acknowledge the emotion, and redirect to the task" /> Deflect the insult, acknowledge the emotion, and redirect to the task</label>
+          <label class="opt"><input type="radio" name="q7_abusive" value="I am not sure" /> I am not sure</label>
+        </div>
+        <div class="q-group"><div class="q-label"><span class="q-num">Q4.</span> Why is paraphrasing important during a high-stress call?</div>
+          <label class="opt"><input type="radio" name="q8_paraphrase" value="It fills silence while waiting for a response" /> It fills silence while waiting for a response</label>
+          <label class="opt"><input type="radio" name="q8_paraphrase" value="Demonstrates listening, confirms accuracy, and gives the caller a chance to correct information" /> Demonstrates listening, confirms accuracy, and gives the caller a chance to correct information</label>
+          <label class="opt"><input type="radio" name="q8_paraphrase" value="It allows you to take control of the conversation" /> It allows you to take control of the conversation</label>
+          <label class="opt"><input type="radio" name="q8_paraphrase" value="I am not sure" /> I am not sure</label>
+        </div>
+        <div class="q-group"><div class="q-label"><span class="q-num">Q5.</span> Which of the following phrases is most likely to <strong>escalate</strong> a situation?</div>
+          <label class="opt"><input type="radio" name="q9_escalate" value="I understand this is upsetting. Tell me what happened." /> "I understand this is upsetting. Tell me what happened."</label>
+          <label class="opt"><input type="radio" name="q9_escalate" value="Calm down and tell me what is going on." /> "Calm down and tell me what is going on."</label>
+          <label class="opt"><input type="radio" name="q9_escalate" value="I want to help you. Let us start with what you need right now." /> "I want to help you. Let us start with what you need right now."</label>
+          <label class="opt"><input type="radio" name="q9_escalate" value="I am not sure" /> I am not sure</label>
+        </div>
+        <div class="q-group"><div class="q-label"><span class="q-num">Q6.</span> According to Verbal Judo, what is "Verbal Judo" primarily defined as?</div>
+          <label class="opt"><input type="radio" name="q10_tool" value="Skillful use of language" /> Skillful use of language</label>
+          <label class="opt"><input type="radio" name="q10_tool" value="A physical defensive technique" /> A physical defensive technique</label>
+          <label class="opt"><input type="radio" name="q10_tool" value="A method of giving commands" /> A method of giving commands</label>
+          <label class="opt"><input type="radio" name="q10_tool" value="I am not sure" /> I am not sure</label>
+        </div>
+        <div class="q-group"><div class="q-label"><span class="q-num">Q7.</span> True or False: Your tone of voice has more impact on de-escalation outcomes than the specific words you choose.</div>
+          <label class="opt"><input type="radio" name="q11_tone" value="True" /> True</label>
+          <label class="opt"><input type="radio" name="q11_tone" value="False" /> False</label>
+          <label class="opt"><input type="radio" name="q11_tone" value="I am not sure" /> I am not sure</label>
+        </div>
+      </div>
+
+      <hr class="section-divider" />
+
+      <!-- ALL: CONFIDENCE -->
+      <div id="panel-confidence">
+        <p style="font-weight:600; margin-bottom:14px;">Rate your confidence on a scale of 1 (not confident) to 5 (very confident):</p>
+        <div class="q-group"><div class="q-label"><span class="q-num">C1.</span> Managing a hostile or emotionally escalated caller</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="conf_hostile" value="1"/>1</label><label class="opt"><input type="radio" name="conf_hostile" value="2"/>2</label><label class="opt"><input type="radio" name="conf_hostile" value="3"/>3</label><label class="opt"><input type="radio" name="conf_hostile" value="4"/>4</label><label class="opt"><input type="radio" name="conf_hostile" value="5"/>5</label></div>
+        </div>
+        <div class="q-group"><div class="q-label"><span class="q-num">C2.</span> Using structured de-escalation techniques (LEAPS, Verbal Judo) during a crisis call</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="conf_crisis" value="1"/>1</label><label class="opt"><input type="radio" name="conf_crisis" value="2"/>2</label><label class="opt"><input type="radio" name="conf_crisis" value="3"/>3</label><label class="opt"><input type="radio" name="conf_crisis" value="4"/>4</label><label class="opt"><input type="radio" name="conf_crisis" value="5"/>5</label></div>
+        </div>
+        <div class="q-group"><div class="q-label"><span class="q-num">C3.</span> Managing your own stress and emotional regulation while de-escalating a call</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="conf_self" value="1"/>1</label><label class="opt"><input type="radio" name="conf_self" value="2"/>2</label><label class="opt"><input type="radio" name="conf_self" value="3"/>3</label><label class="opt"><input type="radio" name="conf_self" value="4"/>4</label><label class="opt"><input type="radio" name="conf_self" value="5"/>5</label></div>
+        </div>
+      </div>
+
+      <hr class="section-divider" />
+
+      <!-- PRE ONLY: OPEN -->
+      <div id="panel-pre-open" class="hidden">
+        <div class="field"><label for="recent_call">Briefly describe a recent call where de-escalation was needed and how you handled it:</label><textarea id="recent_call" rows="3"></textarea></div>
+      </div>
+
+      <!-- POST ONLY: FEEDBACK -->
+      <div id="panel-post-feedback" class="hidden">
+        <div class="q-group"><div class="q-label">Overall, how would you rate this training? (1 = Poor, 5 = Excellent)</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="overall_rating" value="1"/>1</label><label class="opt"><input type="radio" name="overall_rating" value="2"/>2</label><label class="opt"><input type="radio" name="overall_rating" value="3"/>3</label><label class="opt"><input type="radio" name="overall_rating" value="4"/>4</label><label class="opt"><input type="radio" name="overall_rating" value="5"/>5</label></div>
+        </div>
+        <div class="q-group"><div class="q-label">How relevant was this training to your daily work? (1 = Not relevant, 5 = Highly relevant)</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="relevance" value="1"/>1</label><label class="opt"><input type="radio" name="relevance" value="2"/>2</label><label class="opt"><input type="radio" name="relevance" value="3"/>3</label><label class="opt"><input type="radio" name="relevance" value="4"/>4</label><label class="opt"><input type="radio" name="relevance" value="5"/>5</label></div>
+        </div>
+        <div class="q-group"><div class="q-label">On a scale of 0 to 10, how likely are you to recommend this training to a colleague?</div>
+          <div class="likert-row" style="grid-template-columns:repeat(11,1fr);"><label class="opt"><input type="radio" name="nps" value="0"/>0</label><label class="opt"><input type="radio" name="nps" value="1"/>1</label><label class="opt"><input type="radio" name="nps" value="2"/>2</label><label class="opt"><input type="radio" name="nps" value="3"/>3</label><label class="opt"><input type="radio" name="nps" value="4"/>4</label><label class="opt"><input type="radio" name="nps" value="5"/>5</label><label class="opt"><input type="radio" name="nps" value="6"/>6</label><label class="opt"><input type="radio" name="nps" value="7"/>7</label><label class="opt"><input type="radio" name="nps" value="8"/>8</label><label class="opt"><input type="radio" name="nps" value="9"/>9</label><label class="opt"><input type="radio" name="nps" value="10"/>10</label></div>
+        </div>
+        <div class="q-group"><div class="q-label">Which technique do you anticipate using most on the job?</div>
+          <label class="opt"><input type="radio" name="most_useful_technique" value="LEAPS model"/> LEAPS model</label>
+          <label class="opt"><input type="radio" name="most_useful_technique" value="Active listening / paraphrasing"/> Active listening / paraphrasing</label>
+          <label class="opt"><input type="radio" name="most_useful_technique" value="Tone management"/> Tone management</label>
+          <label class="opt"><input type="radio" name="most_useful_technique" value="Verbal Judo deflection"/> Verbal Judo deflection</label>
+          <label class="opt"><input type="radio" name="most_useful_technique" value="Caller redirection"/> Caller redirection</label>
+          <label class="opt"><input type="radio" name="most_useful_technique" value="Emotional regulation / self-management"/> Emotional regulation / self-management</label>
+        </div>
+        <div class="q-group"><div class="q-label">Do you intend to apply what you learned within the next 30 days?</div>
+          <label class="opt"><input type="radio" name="intent_to_apply" value="Definitely"/> Definitely</label>
+          <label class="opt"><input type="radio" name="intent_to_apply" value="Probably"/> Probably</label>
+          <label class="opt"><input type="radio" name="intent_to_apply" value="Unsure"/> Unsure</label>
+          <label class="opt"><input type="radio" name="intent_to_apply" value="Probably not"/> Probably not</label>
+        </div>
+        <div class="field"><label for="most_valuable">What was the most valuable part of this training?</label><textarea id="most_valuable" rows="3"></textarea></div>
+        <div class="field"><label for="improvements">What improvements would you suggest?</label><textarea id="improvements" rows="3"></textarea></div>
+      </div>
+
+      <!-- FOLLOWUP ONLY: BEHAVIORAL TRANSFER -->
+      <div id="panel-followup" class="hidden">
+        <div class="q-group"><div class="q-label">Since completing the training, have you applied de-escalation techniques on a call?</div>
+          <label class="opt"><input type="radio" name="applied_skills" value="Yes"/> Yes</label>
+          <label class="opt"><input type="radio" name="applied_skills" value="No"/> No</label>
+          <label class="opt"><input type="radio" name="applied_skills" value="Not sure"/> Not sure</label>
+        </div>
+        <div class="q-group"><div class="q-label">How often have you used LEAPS or Verbal Judo techniques since training?</div>
+          <label class="opt"><input type="radio" name="application_frequency" value="Daily"/> Daily</label>
+          <label class="opt"><input type="radio" name="application_frequency" value="Several times a week"/> Several times a week</label>
+          <label class="opt"><input type="radio" name="application_frequency" value="Weekly"/> About once a week</label>
+          <label class="opt"><input type="radio" name="application_frequency" value="A few times"/> A few times total</label>
+          <label class="opt"><input type="radio" name="application_frequency" value="Once"/> Once</label>
+          <label class="opt"><input type="radio" name="application_frequency" value="Never"/> I have not used them</label>
+        </div>
+        <div class="field"><label for="application_example">Describe a specific situation where you applied what you learned (or explain why you have not yet had the opportunity):</label><textarea id="application_example" rows="4"></textarea></div>
+        <div class="q-group"><div class="q-label">What barriers, if any, have you faced when trying to apply de-escalation techniques?</div>
+          <label class="opt"><input type="radio" name="barriers" value="None"/> None, I have been able to apply them</label>
+          <label class="opt"><input type="radio" name="barriers" value="Time pressure"/> Call volume / time pressure</label>
+          <label class="opt"><input type="radio" name="barriers" value="Caller severity"/> Caller behavior too severe</label>
+          <label class="opt"><input type="radio" name="barriers" value="Forgot techniques"/> Difficulty remembering specific techniques</label>
+          <label class="opt"><input type="radio" name="barriers" value="Workplace culture"/> Workplace culture / lack of support</label>
+          <label class="opt"><input type="radio" name="barriers" value="Other"/> Other</label>
+        </div>
+        <div class="field hidden" id="barriers-other-wrap"><label for="barriers_other">Please describe:</label><input type="text" id="barriers_other"/></div>
+        <div class="q-group"><div class="q-label">Rate the overall impact this training has had on your daily work (1 = No impact, 5 = Significant impact):</div>
+          <div class="likert-row"><label class="opt"><input type="radio" name="impact_rating" value="1"/>1</label><label class="opt"><input type="radio" name="impact_rating" value="2"/>2</label><label class="opt"><input type="radio" name="impact_rating" value="3"/>3</label><label class="opt"><input type="radio" name="impact_rating" value="4"/>4</label><label class="opt"><input type="radio" name="impact_rating" value="5"/>5</label></div>
+        </div>
+        <div class="q-group"><div class="q-label">Would you benefit from a refresher course?</div>
+          <label class="opt"><input type="radio" name="wants_refresher" value="Yes"/> Yes</label>
+          <label class="opt"><input type="radio" name="wants_refresher" value="No"/> No</label>
+          <label class="opt"><input type="radio" name="wants_refresher" value="Maybe"/> Maybe</label>
+        </div>
+        <div class="field"><label for="followup_comments">Any additional comments about how the training has affected your work?</label><textarea id="followup_comments" rows="3"></textarea></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-back" id="btn-step3-back">Back</button>
+        <button class="btn btn-primary" id="btn-submit">Submit Assessment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: CONFIRMATION -->
+  <div id="step-4" class="hidden">
+    <div class="card"><div class="confirm-box">
+      <div class="check">&#10003;</div>
+      <h2>Assessment Submitted</h2>
+      <p>Thank you for completing this assessment. Your response has been recorded.</p>
+      <div class="receipt" id="receipt-id"></div>
+      <div class="next-step" id="next-step-msg"></div>
+    </div></div>
+  </div>
+</main>
+
+<script>
+const CONFIG = { COURSE_CODE:"KTF-DEESC", COURSE_NAME:"De-escalation Training for 9-1-1 Dispatchers", ENDPOINT_URL:"https://script.google.com/macros/s/AKfycbz47iaqo2ITLSjRfMoVp3XlzMtCHDt3YYJdR90H67QAsF7eOaIHNNvb2K8YaRSYYKKL-g/exec", VERSION:"2.0" };
+const state = { step:1, sessionCode:"", participantId:"", workEmail:"", mode:null };
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+
+function setStep(n){state.step=n;for(let i=1;i<=4;i++){const el=document.getElementById("step-"+i);if(el)el.classList.toggle("hidden",i!==n);const p=document.querySelector('[data-pip="'+i+'"]');if(p){p.classList.remove("active","done");if(i<n)p.classList.add("done");if(i===n)p.classList.add("active");}}window.scrollTo({top:0,behavior:"smooth"});}
+
+function showError(m){const b=$("#error-banner");b.textContent=m;b.classList.remove("hidden");setTimeout(()=>b.classList.add("hidden"),6000);}
+
+document.addEventListener("change",e=>{if(e.target.matches('input[type="radio"]')){const n=e.target.name;document.querySelectorAll('input[name="'+n+'"]').forEach(i=>{i.closest(".opt").classList.toggle("selected",i.checked);});if(n==="barriers")$("#barriers-other-wrap").classList.toggle("hidden",e.target.value!=="Other");}});
+
+$("#session-code").addEventListener("change",()=>{$("#manual-session-wrap").classList.toggle("hidden",$("#session-code").value!=="OTHER");});
+
+// STEP 1
+$("#btn-step1-next").addEventListener("click",()=>{
+  const dd=$("#session-code").value;let code;
+  if(dd==="OTHER"){code=($("#manual-session").value||"").trim().toUpperCase();if(!code||code.length<4){showError("Please enter a valid session code.");return;}}
+  else if(!dd){showError("Please select your class date.");return;}
+  else{code=dd;}
+  const email=($("#work-email").value||"").trim().toLowerCase();
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showError("Please enter a valid work email address.");return;}
+  const pid=($("#participant-id").value||"").trim();
+  if(!/^[0-9]{4}$/.test(pid)){showError("Participant ID must be exactly 4 digits.");return;}
+  state.sessionCode=code;state.workEmail=email;state.participantId=pid;setStep(2);
+});
+
+// STEP 2
+$$(".mode-btn").forEach(b=>{b.addEventListener("click",()=>{$$(".mode-btn").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");state.mode=b.getAttribute("data-mode");$("#btn-step2-next").disabled=false;});});
+$("#btn-step2-back").addEventListener("click",()=>setStep(1));
+$("#btn-step2-next").addEventListener("click",()=>{
+  const h=$("#assess-heading"),l=$("#assess-lede");
+  ["panel-demographics","panel-pre-open","panel-post-feedback","panel-followup"].forEach(id=>document.getElementById(id).classList.add("hidden"));
+  if(state.mode==="pre"){h.textContent="Pre-Training Assessment";l.textContent='Answer based on your CURRENT knowledge and confidence, BEFORE training begins. There are no penalties for selecting "I am not sure."';$("#panel-demographics").classList.remove("hidden");$("#panel-pre-open").classList.remove("hidden");}
+  else if(state.mode==="post"){h.textContent="Post-Training Assessment";l.textContent="Answer based on what you now know AFTER completing today's training. Use the same Participant ID and email you used for the pre-test.";$("#panel-post-feedback").classList.remove("hidden");}
+  else{h.textContent="30-Day Follow-Up Assessment";l.textContent="Answer based on your current knowledge and confidence 30 days after training. This measures how well the learning has carried into your daily work.";$("#panel-followup").classList.remove("hidden");}
+  setStep(3);
+});
+$("#btn-step3-back").addEventListener("click",()=>setStep(2));
+
+// SUBMIT
+$("#btn-submit").addEventListener("click",async()=>{
+  const btn=$("#btn-submit");btn.disabled=true;btn.textContent="Submitting...";
+  const allR=document.querySelectorAll('#step-3 input[type="radio"]');const names=new Set();
+  allR.forEach(r=>{if(!r.closest(".hidden"))names.add(r.name);});
+  const data={};names.forEach(n=>{const c=document.querySelector('input[name="'+n+'"]:checked');data[n]=c?c.value:"";});
+  data.agency_name=state.mode==="pre"?($("#agency_name").value||"").trim():"";
+  data.recent_call=state.mode==="pre"?($("#recent_call").value||"").trim():"";
+  data.most_valuable=state.mode==="post"?($("#most_valuable").value||"").trim():"";
+  data.improvements=state.mode==="post"?($("#improvements").value||"").trim():"";
+  data.application_example=state.mode==="followup"?($("#application_example").value||"").trim():"";
+  data.barriers_other=state.mode==="followup"?($("#barriers_other").value||"").trim():"";
+  data.followup_comments=state.mode==="followup"?($("#followup_comments").value||"").trim():"";
+
+  let req=["q5_leaps","q6_empathy","q7_abusive","q8_paraphrase","q9_escalate","q10_tool","q11_tone","conf_hostile","conf_crisis","conf_self"];
+  if(state.mode==="pre")req.push("years_experience","role","agency_type","prior_training");
+  const miss=req.filter(k=>!data[k]);
+  if(miss.length>0){showError("Please answer all required questions before submitting. ("+miss.length+" remaining)");btn.disabled=false;btn.textContent="Submit Assessment";return;}
+
+  const cmap={q5_leaps:"Listen, Empathize, Ask, Paraphrase, Summarize",q6_empathy:"Showing the caller you understand their perspective without necessarily sharing it",q7_abusive:"Deflect the insult, acknowledge the emotion, and redirect to the task",q8_paraphrase:"Demonstrates listening, confirms accuracy, and gives the caller a chance to correct information",q9_escalate:"Calm down and tell me what is going on.",q10_tool:"Skillful use of language",q11_tone:"True"};
+  let correct=0,attempted=0;for(const k in cmap){if(data[k]){attempted++;if(data[k]===cmap[k])correct++;}}
+
+  const payload={course_code:CONFIG.COURSE_CODE,course_name:CONFIG.COURSE_NAME,session_code:state.sessionCode,participant_id:state.participantId,work_email:state.workEmail,assessment_type:state.mode,submitted_at:new Date().toISOString(),user_agent:navigator.userAgent,score_correct:correct,score_attempted:attempted,score_pct:attempted>0?Math.round(correct/attempted*1000)/10:0,answers:data,form_version:CONFIG.VERSION};
+  try{
+    if(CONFIG.ENDPOINT_URL&&CONFIG.ENDPOINT_URL.indexOf("REPLACE_WITH")===-1){await fetch(CONFIG.ENDPOINT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});}
+    else{console.warn("ENDPOINT_URL not configured. Payload:",payload);}
+    const ml={pre:"PRE",post:"POST",followup:"30DAY"};
+    $("#receipt-id").textContent=state.sessionCode+"-"+state.participantId+"-"+ml[state.mode];
+    const nm=$("#next-step-msg");
+    if(state.mode==="pre")nm.innerHTML="<strong>Next:</strong> Complete today's training, then return to this form and select <strong>Post-Test</strong> using the same email and Participant ID.";
+    else if(state.mode==="post")nm.innerHTML="<strong>Next:</strong> You will receive a short follow-up assessment at your work email in approximately 30 days. This measures how well the training holds over time.";
+    else nm.innerHTML="<strong>Complete.</strong> Thank you for participating in all three phases. Your responses directly support continued training funded by the U.S. Department of Justice, Office of Community Oriented Policing Services.";
+    setStep(4);
+  }catch(err){console.error(err);showError("Submission failed. Please notify your instructor and try again.");btn.disabled=false;btn.textContent="Submit Assessment";}
+});
+
+// URL params: ?s=SESSION&m=followup&e=base64email
+(function(){
+  const p=new URLSearchParams(window.location.search);
+  const s=p.get("s"),m=p.get("m"),e=p.get("e");
+  if(s){const c=s.toUpperCase(),dd=$("#session-code"),opts=Array.from(dd.options),match=opts.find(o=>o.value===c);if(match)dd.value=c;else{dd.value="OTHER";$("#manual-session-wrap").classList.remove("hidden");$("#manual-session").value=c;}}
+  if(e){try{$("#work-email").value=atob(e);}catch(x){$("#work-email").value=e;}}
+  if(m){const mm={pre:"pre",post:"post",followup:"followup","30day":"followup"};const mapped=mm[m.toLowerCase()];if(mapped){const mb=document.querySelector('.mode-btn[data-mode="'+mapped+'"]');if(mb)mb.click();}}
+})();
+</script>
+</body>
+</html>
