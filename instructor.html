@@ -319,7 +319,7 @@ const sessionMeta = {
   "DEESC-062827":{date:"2027-06-28",city:"Rockville",state:"MD",facility:"Montgomery College"}
 };
 
-document.getElementById("session_code").addEventListener("change", function(){
+document.getElementById("session_code").addEventListener("change", async function(){
   const code = this.value;
   const meta = sessionMeta[code];
   if (meta) {
@@ -332,6 +332,63 @@ document.getElementById("session_code").addEventListener("change", function(){
       document.getElementById("course_type").value = "Live online";
     } else {
       document.getElementById("course_type").value = "In-person";
+    }
+  }
+  // Auto-populate from participant data
+  if (code && CONFIG.ENDPOINT_URL && CONFIG.ENDPOINT_URL.indexOf("REPLACE_WITH") === -1) {
+    const panel = document.getElementById("score-auto-panel");
+    panel.classList.remove("hidden");
+    document.getElementById("auto_pre_pct").textContent = "Loading...";
+    document.getElementById("auto_post_pct").textContent = "";
+    document.getElementById("auto_gain").textContent = "";
+    try {
+      const url = CONFIG.ENDPOINT_URL + "?action=stats&session=" + encodeURIComponent(code);
+      const resp = await fetch(url);
+      const stats = await resp.json();
+      if (stats.found && stats.n_pre > 0) {
+        document.getElementById("auto_pre_pct").textContent = stats.pre_score_pct + "%";
+        document.getElementById("auto_post_pct").textContent = stats.post_score_pct + "%";
+        document.getElementById("auto_gain").textContent = "+" + (stats.post_score_pct - stats.pre_score_pct).toFixed(1) + "pp";
+        // Fill total trained
+        document.getElementById("total_trained").value = stats.n_post || stats.n_pre;
+        document.getElementById("total_trained").classList.add("auto-filled");
+        // Fill pre/post scores (convert to 0-5 Likert)
+        if (stats.pre_score_likert) { document.getElementById("pre_score").value = parseFloat(stats.pre_score_likert).toFixed(2); document.getElementById("pre_score").classList.add("auto-filled"); }
+        if (stats.post_score_likert) { document.getElementById("post_score").value = parseFloat(stats.post_score_likert).toFixed(2); document.getElementById("post_score").classList.add("auto-filled"); }
+        // Fill agencies
+        if (stats.agencies && stats.agencies.length > 0) {
+          document.getElementById("agencies").value = stats.agencies.join("\n");
+          document.getElementById("agencies").classList.add("auto-filled");
+        }
+        // Fill Section D averages as radio selections
+        if (stats.eval_d) {
+          for (const [key, val] of Object.entries(stats.eval_d)) {
+            const dNum = key.replace("cops_d","d");
+            const rounded = Math.round(val);
+            const radio = document.querySelector('input[name="'+dNum+'"][value="'+rounded+'"]');
+            if (radio) { radio.checked = true; radio.closest(".opt").classList.add("selected"); }
+          }
+        }
+        // Fill Section E averages as radio selections
+        if (stats.eval_e) {
+          for (const [key, val] of Object.entries(stats.eval_e)) {
+            const eNum = key.replace("cops_e","e");
+            const rounded = Math.round(val);
+            const radio = document.querySelector('input[name="'+eNum+'"][value="'+rounded+'"]');
+            if (radio) { radio.checked = true; radio.closest(".opt").classList.add("selected"); }
+          }
+        }
+        // Fill non-sworn LE count (dispatchers are non-sworn)
+        document.getElementById("cnt_nonsworn").value = stats.n_post || stats.n_pre;
+        document.getElementById("cnt_nonsworn").classList.add("auto-filled");
+      } else {
+        document.getElementById("auto_pre_pct").textContent = "No data";
+        document.getElementById("auto_post_pct").textContent = "yet";
+        document.getElementById("auto_gain").textContent = "";
+      }
+    } catch(err) {
+      console.error("Stats fetch error:", err);
+      document.getElementById("auto_pre_pct").textContent = "Error";
     }
   }
 });
