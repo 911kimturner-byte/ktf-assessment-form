@@ -57,13 +57,20 @@
   .likert-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 10px; }
   .likert-row .opt { justify-content: center; text-align: center; padding: 10px 4px; font-size: 13px; }
   .section-divider { border: none; border-top: 2px solid var(--line); margin: 28px 0; }
-  .mode-toggle { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
-  .mode-btn { padding: 18px 14px; text-align: center; border: 2px solid var(--line); cursor: pointer; transition: all 0.2s; background: #fff; }
-  .mode-btn:hover { border-color: var(--navy-soft); }
-  .mode-btn.selected { border-color: var(--navy); background: var(--navy); color: #fff; }
-  .mode-btn .mode-icon { font-size: 22px; margin-bottom: 4px; }
-  .mode-btn .mode-name { font-weight: 700; font-size: 14px; }
-  .mode-btn .mode-desc { font-size: 11px; opacity: 0.7; margin-top: 2px; }
+  .mode-toggle { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 22px; }
+  .mode-btn { --c: var(--navy); display: flex; align-items: center; gap: 16px; padding: 20px 18px; min-height: 96px; border: 3px solid var(--c); border-left-width: 12px; border-radius: 6px; cursor: pointer; background: #fff; color: var(--ink); transition: all 0.15s; }
+  .mode-btn[data-mode="post"] { --c: var(--crimson); }
+  .mode-btn[data-mode="followup"] { --c: var(--success); }
+  .mode-btn:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.12); }
+  .mode-btn .mode-icon { flex: none; width: 52px; height: 52px; border-radius: 50%; background: var(--c); color: #fff; font-size: 24px; font-weight: 800; display: grid; place-items: center; }
+  .mode-btn .mode-text { flex: 1; }
+  .mode-btn .mode-name { font-weight: 800; font-size: 22px; color: var(--c); line-height: 1.2; }
+  .mode-btn .mode-desc { font-size: 16px; color: var(--ink); margin-top: 4px; }
+  .mode-btn .mode-check { flex: none; width: 30px; height: 30px; border-radius: 50%; border: 3px solid var(--c); display: grid; place-items: center; font-size: 18px; font-weight: 800; color: transparent; }
+  .mode-btn.selected { background: var(--c); }
+  .mode-btn.selected .mode-name, .mode-btn.selected .mode-desc { color: #fff; }
+  .mode-btn.selected .mode-icon { background: #fff; color: var(--c); }
+  .mode-btn.selected .mode-check { border-color: #fff; background: #fff; color: var(--c); }
   .actions { display: flex; gap: 10px; margin-top: 24px; }
   .btn { padding: 13px 26px; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer; border: none; transition: background 0.2s, transform 0.1s; }
   .btn:active { transform: scale(0.98); }
@@ -88,7 +95,6 @@
     .hero { padding: 22px 18px; }
     .hero h1 { font-size: 22px; }
     .card { padding: 20px 16px; }
-    .mode-toggle { grid-template-columns: 1fr; }
     .likert-row .opt { padding: 8px 2px; font-size: 11px; }
     .actions { flex-direction: column-reverse; }
     .btn { width: 100%; }
@@ -149,23 +155,66 @@
             <option value="DEESC-123026">Dec 30, 2026 | Online</option>
           </optgroup>
           <optgroup label="2027">
+            <option value="DEESC-010227">Jan 2, 2027 | Online</option>
+            <option value="DEESC-010427">Jan 4, 2027 | Online</option>
+            <option value="DEESC-010527">Jan 5, 2027 | Online</option>
             <option value="DEESC-010627">Jan 6, 2027 | Online</option>
+            <option value="DEESC-010727">Jan 7, 2027 | Online</option>
             <option value="DEESC-012227">Jan 22, 2027 | Online</option>
             <option value="DEESC-012527">Jan 25, 2027 | Cobb County, GA (In Person)</option>
+            <option value="DEESC-020127">Feb 1, 2027 | Online</option>
+            <option value="DEESC-020227">Feb 2, 2027 | Online</option>
+            <option value="DEESC-020327">Feb 3, 2027 | Online</option>
             <option value="DEESC-020427">Feb 4, 2027 | Online</option>
+            <option value="DEESC-020527">Feb 5, 2027 | Online</option>
             <option value="DEESC-021727">Feb 17, 2027 | Online</option>
             <option value="DEESC-022327">Feb 23, 2027 | El Paso (In Person)</option>
+            <option value="DEESC-030527">Mar 5, 2027 | Online</option>
+            <option value="DEESC-030627">Mar 6, 2027 | Online</option>
+            <option value="DEESC-030827">Mar 8, 2027 | Online</option>
+            <option value="DEESC-030927">Mar 9, 2027 | Online</option>
             <option value="DEESC-031127">Mar 11, 2027 | Online</option>
             <option value="DEESC-031927">Mar 19, 2027 | Online</option>
             <option value="DEESC-032427">Mar 24, 2027 | Online</option>
+            <option value="DEESC-040127">Apr 1, 2027 | Online</option>
+            <option value="DEESC-040227">Apr 2, 2027 | Online</option>
+            <option value="DEESC-040327">Apr 3, 2027 | Online</option>
+            <option value="DEESC-040527">Apr 5, 2027 | Online</option>
+            <option value="DEESC-040727">Apr 7, 2027 | Online</option>
             <option value="DEESC-040827">Apr 8, 2027 | Online</option>
             <option value="DEESC-041327">Apr 13, 2027 | Online</option>
-            <option value="DEESC-042627">Apr 26, 2027 | Maui (In Person)</option>
+            <option value="DEESC-042627">Apr 26, 2027 | Location TBD (In Person)</option>
+            <option value="DEESC-050127">May 1, 2027 | Online</option>
+            <option value="DEESC-050427">May 4, 2027 | Online</option>
             <option value="DEESC-050527">May 5, 2027 | Online</option>
+            <option value="DEESC-050627">May 6, 2027 | Online</option>
+            <option value="DEESC-050727">May 7, 2027 | Online</option>
+            <option value="DEESC-050827">May 8, 2027 | Online</option>
+            <option value="DEESC-051127">May 11, 2027 | Online</option>
             <option value="DEESC-052127">May 21, 2027 | Online</option>
+            <option value="DEESC-060127">Jun 1, 2027 | Online</option>
+            <option value="DEESC-060227">Jun 2, 2027 | Online</option>
             <option value="DEESC-060327">Jun 3, 2027 | Online</option>
+            <option value="DEESC-060427">Jun 4, 2027 | Online</option>
+            <option value="DEESC-060527">Jun 5, 2027 | Online</option>
             <option value="DEESC-061127">Jun 11, 2027 | Online</option>
             <option value="DEESC-062827">Jun 28, 2027 | Montgomery College, MD (In Person)</option>
+            <option value="DEESC-081027">Aug 10, 2027 | Online</option>
+            <option value="DEESC-081227">Aug 12, 2027 | Online</option>
+            <option value="DEESC-081327">Aug 13, 2027 | Online</option>
+            <option value="DEESC-081727">Aug 17, 2027 | Online</option>
+            <option value="DEESC-081927">Aug 19, 2027 | Online</option>
+            <option value="DEESC-082027">Aug 20, 2027 | Online</option>
+            <option value="DEESC-082427">Aug 24, 2027 | Online</option>
+            <option value="DEESC-082627">Aug 26, 2027 | Online</option>
+            <option value="DEESC-090227">Sep 2, 2027 | Online</option>
+            <option value="DEESC-090327">Sep 3, 2027 | Online</option>
+            <option value="DEESC-090727">Sep 7, 2027 | Online</option>
+            <option value="DEESC-090927">Sep 9, 2027 | Online</option>
+            <option value="DEESC-091427">Sep 14, 2027 | Online</option>
+            <option value="DEESC-091627">Sep 16, 2027 | Online</option>
+            <option value="DEESC-092327">Sep 23, 2027 | Online</option>
+            <option value="DEESC-092827">Sep 28, 2027 | Montgomery College, MD (In Person)</option>
           </optgroup>
           <option value="OTHER">Other (enter session code manually)</option>
         </select>
@@ -192,13 +241,12 @@
   <!-- STEP 2: MODE -->
   <div id="step-2" class="hidden">
     <div class="card">
-      <h2>Assessment Phase</h2>
-      <p class="lede">Select the phase that matches where you are in the training process.</p>
+      <h2>Which survey are you taking?</h2>
+      <p class="lede">Tap one, then tap Continue.</p>
       <div class="mode-toggle">
-        <div class="mode-btn" data-mode="pre"><div class="mode-icon">&#9312;</div><div class="mode-name">Pre-Test</div><div class="mode-desc">Before training begins</div></div>
-        <div class="mode-btn" data-mode="post"><div class="mode-icon">&#9313;</div><div class="mode-name">Post-Test</div><div class="mode-desc">After training ends</div></div>
-        <div class="mode-btn" data-mode="followup"><div class="mode-icon">&#9314;</div><div class="mode-name">30-Day Follow-Up</div><div class="mode-desc">Retention check</div></div>
-        <div class="mode-btn" data-mode="instructor"><div class="mode-icon">&#9315;</div><div class="mode-name">Instructor</div><div class="mode-desc">COPS Office report</div></div>
+        <div class="mode-btn" data-mode="pre" role="button" tabindex="0"><div class="mode-icon">1</div><div class="mode-text"><div class="mode-name">Pre-Test</div><div class="mode-desc">Take this BEFORE class starts</div></div><div class="mode-check">&#10003;</div></div>
+        <div class="mode-btn" data-mode="post" role="button" tabindex="0"><div class="mode-icon">2</div><div class="mode-text"><div class="mode-name">Post-Test</div><div class="mode-desc">Take this at the END of class</div></div><div class="mode-check">&#10003;</div></div>
+        <div class="mode-btn" data-mode="followup" role="button" tabindex="0"><div class="mode-icon">3</div><div class="mode-text"><div class="mode-name">30&#8209;Day Follow&#8209;Up</div><div class="mode-desc">Take this about 30 days AFTER class</div></div><div class="mode-check">&#10003;</div></div>
       </div>
       <div class="actions">
         <button class="btn btn-back" id="btn-step2-back">Back</button>
@@ -468,7 +516,23 @@
           <label class="opt"><input type="radio" name="application_frequency" value="Once"/> Once</label>
           <label class="opt"><input type="radio" name="application_frequency" value="Never"/> I have not used them</label>
         </div>
-        <div class="field"><label for="application_example">Describe a specific situation where you applied what you learned (or explain why you have not yet had the opportunity):</label><textarea id="application_example" rows="4"></textarea></div>
+        <div class="field"><label for="application_example">Describe a recent difficult call where you used what you learned. What did you do, and how did the caller respond? (If you have not had one yet, say so.)</label><textarea id="application_example" rows="4"></textarea></div>
+        <div class="q-group"><div class="q-label">Compared with how you would have handled this call before the training, how did it go?</div>
+          <label class="opt"><input type="radio" name="call_outcome" value="Much better"/> Much better</label>
+          <label class="opt"><input type="radio" name="call_outcome" value="Somewhat better"/> Somewhat better</label>
+          <label class="opt"><input type="radio" name="call_outcome" value="About the same"/> About the same</label>
+          <label class="opt"><input type="radio" name="call_outcome" value="Worse"/> Worse</label>
+          <label class="opt"><input type="radio" name="call_outcome" value="No call yet"/> I have not had a call like this yet</label>
+        </div>
+        <div class="q-group"><div class="q-label">Which technique helped most on that call?</div>
+          <label class="opt"><input type="radio" name="call_technique" value="LEAPS model"/> LEAPS model</label>
+          <label class="opt"><input type="radio" name="call_technique" value="Active listening / paraphrasing"/> Active listening / paraphrasing</label>
+          <label class="opt"><input type="radio" name="call_technique" value="Tone management"/> Tone management</label>
+          <label class="opt"><input type="radio" name="call_technique" value="Verbal Judo deflection"/> Verbal Judo deflection</label>
+          <label class="opt"><input type="radio" name="call_technique" value="Caller redirection"/> Caller redirection</label>
+          <label class="opt"><input type="radio" name="call_technique" value="Emotional regulation / self-management"/> Emotional regulation / self-management</label>
+          <label class="opt"><input type="radio" name="call_technique" value="None / not applicable"/> None / not applicable</label>
+        </div>
         <div class="q-group"><div class="q-label">What barriers, if any, have you faced when trying to apply de-escalation techniques?</div>
           <label class="opt"><input type="radio" name="barriers" value="None"/> None, I have been able to apply them</label>
           <label class="opt"><input type="radio" name="barriers" value="Time pressure"/> Call volume / time pressure</label>
@@ -559,6 +623,8 @@
 
         </div>
       </div>
+
+      <p id="privacy-notice" style="font-size:12px; color:#6B6B6B; margin:16px 0 0;">Your answers help KTF improve this training and report results to the U.S. Department of Justice COPS Office. KTF may also share results and comments in reports and publications. Names and emails are never included.</p>
 
       <div class="actions">
         <button class="btn btn-back" id="btn-step3-back">Back</button>
