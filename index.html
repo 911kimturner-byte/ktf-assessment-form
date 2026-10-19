@@ -284,10 +284,11 @@
           <label class="opt"><input type="radio" name="agency_type" value="County" /> County</label>
           <label class="opt"><input type="radio" name="agency_type" value="State" /> State</label>
           <label class="opt"><input type="radio" name="agency_type" value="Consolidated/Regional" /> Consolidated / Regional</label>
+          <label class="opt"><input type="radio" name="agency_type" value="Tribal" /> Tribal</label>
           <label class="opt"><input type="radio" name="agency_type" value="Federal" /> Federal</label>
           <label class="opt"><input type="radio" name="agency_type" value="Other" /> Other</label>
         </div>
-        <div class="q-group"><div class="q-label">Which DOJ reporting category best describes you?</div>
+        <div class="q-group"><div class="q-label">Which DOJ reporting category best describes you?</div><div class="hint-inline" style="font-size:12px;color:#6B6B6B;margin-bottom:6px;">9-1-1 dispatchers, call-takers, and records staff: choose Non-sworn law enforcement staff. Tribal agency staff: choose the matching Tribal option.</div>
           <label class="opt"><input type="radio" name="doj_class" value="Non-sworn LE" /> Non-sworn law enforcement staff (call-taker, dispatcher, records, other civilian staff)</label>
           <label class="opt"><input type="radio" name="doj_class" value="LE Line Officers" /> Sworn officer or deputy, line level</label>
           <label class="opt"><input type="radio" name="doj_class" value="LE Mid-Level Officers" /> Sworn officer, mid-level (sergeant, lieutenant)</label>
@@ -350,7 +351,7 @@
           <label class="opt"><input type="radio" name="q9_escalate" value="I want to help you. Let us start with what you need right now." /> "I want to help you. Let us start with what you need right now."</label>
           <label class="opt"><input type="radio" name="q9_escalate" value="I am not sure" /> I am not sure</label>
         </div>
-        <div class="q-group"><div class="q-label"><span class="q-num">Q6.</span> According to Verbal Judo, what is "Verbal Judo" primarily defined as?</div>
+        <div class="q-group"><div class="q-label"><span class="q-num">Q6.</span> How is Verbal Judo primarily defined?</div>
           <label class="opt"><input type="radio" name="q10_tool" value="Skillful use of language" /> Skillful use of language</label>
           <label class="opt"><input type="radio" name="q10_tool" value="A physical defensive technique" /> A physical defensive technique</label>
           <label class="opt"><input type="radio" name="q10_tool" value="A method of giving commands" /> A method of giving commands</label>
@@ -416,16 +417,16 @@
         <p style="font-weight:700; color:#A01B2A; margin-bottom:6px; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">COPS Office Course Evaluation (Section D)</p>
         <p style="font-size:12px; color:#6B6B6B; margin-bottom:16px;">Rate each item on a scale of 1 (Strongly Disagree) to 5 (Strongly Agree).</p>
 
-        <div class="q-group"><div class="q-label">D1. Before the course, I would rate my knowledge, skills, and abilities in this subject as:</div><div class="hint-inline" style="font-size:11px;color:#6B6B6B;margin-bottom:6px;">1=None, 2=Little, 3=Basic, 4=Intermediate, 5=Advanced</div>
+        <div class="q-group"><div class="q-label">D1. Before the course, I would rate my knowledge, skills, and abilities in this subject as:</div><div class="hint-inline" style="font-size:11px;color:#6B6B6B;margin-bottom:6px;"><strong>Different scale:</strong> 1=None, 2=Little, 3=Basic, 4=Intermediate, 5=Advanced</div>
           <div class="likert-row"><label class="opt"><input type="radio" name="cops_d1" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d1" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d1" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d1" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d1" value="5"/>5</label></div></div>
 
-        <div class="q-group"><div class="q-label">D2. After the course, I would rate my knowledge, skills, and abilities in this subject as:</div><div class="hint-inline" style="font-size:11px;color:#6B6B6B;margin-bottom:6px;">1=None, 2=Little, 3=Basic, 4=Intermediate, 5=Advanced</div>
+        <div class="q-group"><div class="q-label">D2. After the course, I would rate my knowledge, skills, and abilities in this subject as:</div><div class="hint-inline" style="font-size:11px;color:#6B6B6B;margin-bottom:6px;"><strong>Different scale:</strong> 1=None, 2=Little, 3=Basic, 4=Intermediate, 5=Advanced</div>
           <div class="likert-row"><label class="opt"><input type="radio" name="cops_d2" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d2" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d2" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d2" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d2" value="5"/>5</label></div></div>
 
         <div class="q-group"><div class="q-label">D3. The training objectives and outcomes for the course are explicitly stated and understandable.</div>
           <div class="likert-row"><label class="opt"><input type="radio" name="cops_d3" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d3" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d3" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d3" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d3" value="5"/>5</label></div></div>
 
-        <div class="q-group"><div class="q-label">D4. The course provided the knowledge and skills I need to accomplish the job for which I am receiving training.</div>
+        <div class="q-group"><div class="q-label">D4. The course provided the knowledge and skills I need to do my job.</div>
           <div class="likert-row"><label class="opt"><input type="radio" name="cops_d4" value="1"/>1</label><label class="opt"><input type="radio" name="cops_d4" value="2"/>2</label><label class="opt"><input type="radio" name="cops_d4" value="3"/>3</label><label class="opt"><input type="radio" name="cops_d4" value="4"/>4</label><label class="opt"><input type="radio" name="cops_d4" value="5"/>5</label></div></div>
 
         <div class="q-group"><div class="q-label">D5. Materials are presented in realistic job scenarios that I can easily transfer to my job.</div>
@@ -477,24 +478,26 @@
         <div class="q-group"><div class="q-label">E9. Overall, the performance of the instructor(s) met my needs and expectations.</div>
           <div class="likert-row"><label class="opt"><input type="radio" name="cops_e9" value="1"/>1</label><label class="opt"><input type="radio" name="cops_e9" value="2"/>2</label><label class="opt"><input type="radio" name="cops_e9" value="3"/>3</label><label class="opt"><input type="radio" name="cops_e9" value="4"/>4</label><label class="opt"><input type="radio" name="cops_e9" value="5"/>5</label></div></div>
 
+        <div id="section-f">
         <hr class="section-divider" />
-        <p style="font-weight:700; color:#A01B2A; margin-bottom:6px; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">Online Course Evaluation (Section F)</p>
-        <p style="font-size:12px; color:#6B6B6B; margin-bottom:16px;">Rate each item on a scale of 1 (Strongly Disagree) to 5 (Strongly Agree). Choose N/A if the item does not apply to how you took this course.</p>
+        <p style="font-weight:700; color:#A01B2A; margin-bottom:6px; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;">Live Online Class Evaluation (Section F)</p>
+        <p style="font-size:12px; color:#6B6B6B; margin-bottom:16px;">Rate each item on a scale of 1 (Strongly Disagree) to 5 (Strongly Agree). Choose N/A if an item does not apply.</p>
 
-        <div class="q-group"><div class="q-label">F1. The training program is easy to access online.</div>
+        <div class="q-group"><div class="q-label">F1. The online class was easy to join and access.</div>
           <div class="likert-row"><label class="opt"><input type="radio" name="cops_f1" value="1"/>1</label><label class="opt"><input type="radio" name="cops_f1" value="2"/>2</label><label class="opt"><input type="radio" name="cops_f1" value="3"/>3</label><label class="opt"><input type="radio" name="cops_f1" value="4"/>4</label><label class="opt"><input type="radio" name="cops_f1" value="5"/>5</label><label class="opt"><input type="radio" name="cops_f1" value="N/A"/>N/A</label></div>
         </div>
-        <div class="q-group"><div class="q-label">F2. Interface design and navigation features are logical, consistent, and efficient throughout the course.</div>
+        <div class="q-group"><div class="q-label">F2. The online platform was easy to use. Features such as chat, polls, and breakout rooms worked well.</div>
           <div class="likert-row"><label class="opt"><input type="radio" name="cops_f2" value="1"/>1</label><label class="opt"><input type="radio" name="cops_f2" value="2"/>2</label><label class="opt"><input type="radio" name="cops_f2" value="3"/>3</label><label class="opt"><input type="radio" name="cops_f2" value="4"/>4</label><label class="opt"><input type="radio" name="cops_f2" value="5"/>5</label><label class="opt"><input type="radio" name="cops_f2" value="N/A"/>N/A</label></div>
         </div>
-        <div class="q-group"><div class="q-label">F3. Course directions are clear, easy to understand, and explain how to proceed through the course.</div>
+        <div class="q-group"><div class="q-label">F3. The instructor(s) gave clear directions on how to take part in the online class.</div>
           <div class="likert-row"><label class="opt"><input type="radio" name="cops_f3" value="1"/>1</label><label class="opt"><input type="radio" name="cops_f3" value="2"/>2</label><label class="opt"><input type="radio" name="cops_f3" value="3"/>3</label><label class="opt"><input type="radio" name="cops_f3" value="4"/>4</label><label class="opt"><input type="radio" name="cops_f3" value="5"/>5</label><label class="opt"><input type="radio" name="cops_f3" value="N/A"/>N/A</label></div>
         </div>
-        <div class="q-group"><div class="q-label">F4. I was able to save work, exit the program, come back at a later time, and start where I left off.</div>
+        <div class="q-group"><div class="q-label">F4. If I had a technical problem or lost my connection, I was able to rejoin and catch up.</div>
           <div class="likert-row"><label class="opt"><input type="radio" name="cops_f4" value="1"/>1</label><label class="opt"><input type="radio" name="cops_f4" value="2"/>2</label><label class="opt"><input type="radio" name="cops_f4" value="3"/>3</label><label class="opt"><input type="radio" name="cops_f4" value="4"/>4</label><label class="opt"><input type="radio" name="cops_f4" value="5"/>5</label><label class="opt"><input type="radio" name="cops_f4" value="N/A"/>N/A</label></div>
         </div>
-        <div class="q-group"><div class="q-label">F5. I was able to control the speed at which I took the course and could replay or review materials previously accessed.</div>
+        <div class="q-group"><div class="q-label">F5. The pace of the class worked for me. I could ask the instructor(s) to repeat or review material when needed.</div>
           <div class="likert-row"><label class="opt"><input type="radio" name="cops_f5" value="1"/>1</label><label class="opt"><input type="radio" name="cops_f5" value="2"/>2</label><label class="opt"><input type="radio" name="cops_f5" value="3"/>3</label><label class="opt"><input type="radio" name="cops_f5" value="4"/>4</label><label class="opt"><input type="radio" name="cops_f5" value="5"/>5</label><label class="opt"><input type="radio" name="cops_f5" value="N/A"/>N/A</label></div>
+        </div>
         </div>
 
         <div class="field"><label for="most_valuable">What was the most valuable part of this training?</label><textarea id="most_valuable" rows="3"></textarea></div>
@@ -679,6 +682,9 @@ $("#btn-step2-next").addEventListener("click",async()=>{
   ["panel-demographics","panel-pre-open","panel-post-feedback","panel-followup","panel-instructor","panel-knowledge","panel-confidence"].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.add("hidden");});
   // Show knowledge and confidence for non-instructor modes
   if(state.mode!=="instructor"){$("#panel-knowledge").classList.remove("hidden");$("#panel-confidence").classList.remove("hidden");}
+  // Section F is for live online classes only. Hide it for in-person classes.
+  {const sel=$("#session-code");const opt=sel&&sel.options[sel.selectedIndex];const inPerson=!!(opt&&/in person/i.test(opt.textContent));
+   const f=$("#section-f");if(f){f.classList.toggle("hidden",inPerson);if(inPerson)f.querySelectorAll("input").forEach(i=>{i.checked=false;});}}
   if(state.mode==="pre"){h.textContent="Pre-Training Assessment";l.textContent='Answer based on your CURRENT knowledge and confidence, BEFORE training begins. There are no penalties for selecting "I am not sure."';$("#panel-demographics").classList.remove("hidden");$("#panel-pre-open").classList.remove("hidden");}
   else if(state.mode==="post"){h.textContent="Post-Training Assessment";l.textContent="Answer based on what you now know AFTER completing today's training. Use the same Participant ID and email you used for the pre-test.";$("#panel-post-feedback").classList.remove("hidden");}
   else if(state.mode==="followup"){h.textContent="30-Day Follow-Up Assessment";l.textContent="Answer based on your current knowledge and confidence 30 days after training. This measures how well the learning has carried into your daily work.";$("#panel-followup").classList.remove("hidden");$("#panel-knowledge").classList.remove("hidden");}
