@@ -125,23 +125,66 @@ body{min-height:100vh;padding:0 0 80px}
             <option value="DEESC-123026">Dec 30, 2026 | Online</option>
           </optgroup>
           <optgroup label="2027">
+            <option value="DEESC-010227">Jan 2, 2027 | Online</option>
+            <option value="DEESC-010427">Jan 4, 2027 | Online</option>
+            <option value="DEESC-010527">Jan 5, 2027 | Online</option>
             <option value="DEESC-010627">Jan 6, 2027 | Online</option>
+            <option value="DEESC-010727">Jan 7, 2027 | Online</option>
             <option value="DEESC-012227">Jan 22, 2027 | Online</option>
             <option value="DEESC-012527">Jan 25, 2027 | Cobb County, GA</option>
+            <option value="DEESC-020127">Feb 1, 2027 | Online</option>
+            <option value="DEESC-020227">Feb 2, 2027 | Online</option>
+            <option value="DEESC-020327">Feb 3, 2027 | Online</option>
             <option value="DEESC-020427">Feb 4, 2027 | Online</option>
+            <option value="DEESC-020527">Feb 5, 2027 | Online</option>
             <option value="DEESC-021727">Feb 17, 2027 | Online</option>
             <option value="DEESC-022327">Feb 23, 2027 | El Paso</option>
+            <option value="DEESC-030527">Mar 5, 2027 | Online</option>
+            <option value="DEESC-030627">Mar 6, 2027 | Online</option>
+            <option value="DEESC-030827">Mar 8, 2027 | Online</option>
+            <option value="DEESC-030927">Mar 9, 2027 | Online</option>
             <option value="DEESC-031127">Mar 11, 2027 | Online</option>
             <option value="DEESC-031927">Mar 19, 2027 | Online</option>
             <option value="DEESC-032427">Mar 24, 2027 | Online</option>
+            <option value="DEESC-040127">Apr 1, 2027 | Online</option>
+            <option value="DEESC-040227">Apr 2, 2027 | Online</option>
+            <option value="DEESC-040327">Apr 3, 2027 | Online</option>
+            <option value="DEESC-040527">Apr 5, 2027 | Online</option>
+            <option value="DEESC-040727">Apr 7, 2027 | Online</option>
             <option value="DEESC-040827">Apr 8, 2027 | Online</option>
             <option value="DEESC-041327">Apr 13, 2027 | Online</option>
-            <option value="DEESC-042627">Apr 26, 2027 | Maui</option>
+            <option value="DEESC-042627">Apr 26, 2027 | Location TBD</option>
+            <option value="DEESC-050127">May 1, 2027 | Online</option>
+            <option value="DEESC-050427">May 4, 2027 | Online</option>
             <option value="DEESC-050527">May 5, 2027 | Online</option>
+            <option value="DEESC-050627">May 6, 2027 | Online</option>
+            <option value="DEESC-050727">May 7, 2027 | Online</option>
+            <option value="DEESC-050827">May 8, 2027 | Online</option>
+            <option value="DEESC-051127">May 11, 2027 | Online</option>
             <option value="DEESC-052127">May 21, 2027 | Online</option>
+            <option value="DEESC-060127">Jun 1, 2027 | Online</option>
+            <option value="DEESC-060227">Jun 2, 2027 | Online</option>
             <option value="DEESC-060327">Jun 3, 2027 | Online</option>
+            <option value="DEESC-060427">Jun 4, 2027 | Online</option>
+            <option value="DEESC-060527">Jun 5, 2027 | Online</option>
             <option value="DEESC-061127">Jun 11, 2027 | Online</option>
             <option value="DEESC-062827">Jun 28, 2027 | Montgomery College, MD</option>
+            <option value="DEESC-081027">Aug 10, 2027 | Online</option>
+            <option value="DEESC-081227">Aug 12, 2027 | Online</option>
+            <option value="DEESC-081327">Aug 13, 2027 | Online</option>
+            <option value="DEESC-081727">Aug 17, 2027 | Online</option>
+            <option value="DEESC-081927">Aug 19, 2027 | Online</option>
+            <option value="DEESC-082027">Aug 20, 2027 | Online</option>
+            <option value="DEESC-082427">Aug 24, 2027 | Online</option>
+            <option value="DEESC-082627">Aug 26, 2027 | Online</option>
+            <option value="DEESC-090227">Sep 2, 2027 | Online</option>
+            <option value="DEESC-090327">Sep 3, 2027 | Online</option>
+            <option value="DEESC-090727">Sep 7, 2027 | Online</option>
+            <option value="DEESC-090927">Sep 9, 2027 | Online</option>
+            <option value="DEESC-091427">Sep 14, 2027 | Online</option>
+            <option value="DEESC-091627">Sep 16, 2027 | Online</option>
+            <option value="DEESC-092327">Sep 23, 2027 | Online</option>
+            <option value="DEESC-092827">Sep 28, 2027 | Montgomery College, MD</option>
           </optgroup>
         </select>
       </div>
@@ -156,10 +199,13 @@ body{min-height:100vh;padding:0 0 80px}
       <div class="field"><label>7. Facility</label><input type="text" id="facility"/></div>
     </div>
     <div class="field"><label>8. Host Agency</label><div class="hint">Complete only for in-person delivery.</div><input type="text" id="host_agency"/></div>
-    <div class="field"><label>9. Trainer Name(s)</label><div class="hint">One per line, with affiliation.</div><textarea id="trainers">Kim Turner, The Kim Turner Foundation
-Sean Hadden, The Kim Turner Foundation
-Anthony Alvo, The Kim Turner Foundation</textarea></div>
-    <div class="field"><label>10. Agencies with Learners</label><div class="hint">One per line.</div><textarea id="agencies"></textarea></div>
+    <div class="field"><label>9. Trainer Name(s)</label><div class="hint">Check everyone who taught this class. Add any guest instructor on a new line in the box below, with affiliation.</div>
+      <div id="trainer-picks"><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="trainer-pick" value="Kim Turner, The Kim Turner Foundation"/> Kim Turner</label><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="trainer-pick" value="Sean Hadden, The Kim Turner Foundation"/> Sean Hadden</label><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="trainer-pick" value="Anthony Alvo, The Kim Turner Foundation"/> Anthony Alvo</label><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="trainer-pick" value="Mandi Runnells, The Kim Turner Foundation"/> Mandi Runnells</label><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="trainer-pick" value="Ken Hardesty, The Kim Turner Foundation"/> Ken Hardesty</label><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="trainer-pick" value="Charles Probst, The Kim Turner Foundation"/> Charles Probst</label></div>
+      <textarea id="trainers" rows="4"></textarea></div>
+    <div class="field"><label>Moderator(s)</label><div class="hint">Check everyone who moderated this class. Add anyone else on a new line in the box below, with affiliation.</div>
+      <div id="moderator-picks"><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="moderator-pick" value="Jessica Palomino, The Kim Turner Foundation"/> Jessica Palomino</label><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="moderator-pick" value="David Washington, The Kim Turner Foundation"/> David Washington</label><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="moderator-pick" value="Kim Turner, The Kim Turner Foundation"/> Kim Turner</label><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="moderator-pick" value="Sean Hadden, The Kim Turner Foundation"/> Sean Hadden</label><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="moderator-pick" value="Anthony Alvo, The Kim Turner Foundation"/> Anthony Alvo</label><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="moderator-pick" value="Mandi Runnells, The Kim Turner Foundation"/> Mandi Runnells</label><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="moderator-pick" value="Ken Hardesty, The Kim Turner Foundation"/> Ken Hardesty</label><label style="display:flex;align-items:center;gap:8px;margin:4px 0;font-weight:400;"><input type="checkbox" class="moderator-pick" value="Charles Probst, The Kim Turner Foundation"/> Charles Probst</label></div>
+      <textarea id="moderators" rows="3"></textarea></div>
+    <div class="field"><label>10. Agencies Your Students Came From</label><div class="hint">This fills in from the students' pre-tests after you pick the class date. List each agency once, one per line. Fix typos and remove duplicates.</div><textarea id="agencies"></textarea></div>
   </div>
 
   <!-- SECTION B -->
@@ -300,23 +346,66 @@ const sessionMeta = {
   "DEESC-113026":{date:"2026-11-30",city:"Online",state:"",facility:"Online"},
   "DEESC-120926":{date:"2026-12-09",city:"Online",state:"",facility:"Online"},
   "DEESC-123026":{date:"2026-12-30",city:"Online",state:"",facility:"Online"},
+  "DEESC-010227":{date:"2027-01-02",city:"Online",state:"",facility:"Online"},
+  "DEESC-010427":{date:"2027-01-04",city:"Online",state:"",facility:"Online"},
+  "DEESC-010527":{date:"2027-01-05",city:"Online",state:"",facility:"Online"},
   "DEESC-010627":{date:"2027-01-06",city:"Online",state:"",facility:"Online"},
+  "DEESC-010727":{date:"2027-01-07",city:"Online",state:"",facility:"Online"},
   "DEESC-012227":{date:"2027-01-22",city:"Online",state:"",facility:"Online"},
   "DEESC-012527":{date:"2027-01-25",city:"Cobb County",state:"GA",facility:""},
+  "DEESC-020127":{date:"2027-02-01",city:"Online",state:"",facility:"Online"},
+  "DEESC-020227":{date:"2027-02-02",city:"Online",state:"",facility:"Online"},
+  "DEESC-020327":{date:"2027-02-03",city:"Online",state:"",facility:"Online"},
   "DEESC-020427":{date:"2027-02-04",city:"Online",state:"",facility:"Online"},
+  "DEESC-020527":{date:"2027-02-05",city:"Online",state:"",facility:"Online"},
   "DEESC-021727":{date:"2027-02-17",city:"Online",state:"",facility:"Online"},
   "DEESC-022327":{date:"2027-02-23",city:"El Paso",state:"TX",facility:""},
+  "DEESC-030527":{date:"2027-03-05",city:"Online",state:"",facility:"Online"},
+  "DEESC-030627":{date:"2027-03-06",city:"Online",state:"",facility:"Online"},
+  "DEESC-030827":{date:"2027-03-08",city:"Online",state:"",facility:"Online"},
+  "DEESC-030927":{date:"2027-03-09",city:"Online",state:"",facility:"Online"},
   "DEESC-031127":{date:"2027-03-11",city:"Online",state:"",facility:"Online"},
   "DEESC-031927":{date:"2027-03-19",city:"Online",state:"",facility:"Online"},
   "DEESC-032427":{date:"2027-03-24",city:"Online",state:"",facility:"Online"},
+  "DEESC-040127":{date:"2027-04-01",city:"Online",state:"",facility:"Online"},
+  "DEESC-040227":{date:"2027-04-02",city:"Online",state:"",facility:"Online"},
+  "DEESC-040327":{date:"2027-04-03",city:"Online",state:"",facility:"Online"},
+  "DEESC-040527":{date:"2027-04-05",city:"Online",state:"",facility:"Online"},
+  "DEESC-040727":{date:"2027-04-07",city:"Online",state:"",facility:"Online"},
   "DEESC-040827":{date:"2027-04-08",city:"Online",state:"",facility:"Online"},
   "DEESC-041327":{date:"2027-04-13",city:"Online",state:"",facility:"Online"},
-  "DEESC-042627":{date:"2027-04-26",city:"Maui",state:"HI",facility:""},
+  "DEESC-042627":{date:"2027-04-26",city:"",state:"",facility:""},
+  "DEESC-050127":{date:"2027-05-01",city:"Online",state:"",facility:"Online"},
+  "DEESC-050427":{date:"2027-05-04",city:"Online",state:"",facility:"Online"},
   "DEESC-050527":{date:"2027-05-05",city:"Online",state:"",facility:"Online"},
+  "DEESC-050627":{date:"2027-05-06",city:"Online",state:"",facility:"Online"},
+  "DEESC-050727":{date:"2027-05-07",city:"Online",state:"",facility:"Online"},
+  "DEESC-050827":{date:"2027-05-08",city:"Online",state:"",facility:"Online"},
+  "DEESC-051127":{date:"2027-05-11",city:"Online",state:"",facility:"Online"},
   "DEESC-052127":{date:"2027-05-21",city:"Online",state:"",facility:"Online"},
+  "DEESC-060127":{date:"2027-06-01",city:"Online",state:"",facility:"Online"},
+  "DEESC-060227":{date:"2027-06-02",city:"Online",state:"",facility:"Online"},
   "DEESC-060327":{date:"2027-06-03",city:"Online",state:"",facility:"Online"},
+  "DEESC-060427":{date:"2027-06-04",city:"Online",state:"",facility:"Online"},
+  "DEESC-060527":{date:"2027-06-05",city:"Online",state:"",facility:"Online"},
   "DEESC-061127":{date:"2027-06-11",city:"Online",state:"",facility:"Online"},
-  "DEESC-062827":{date:"2027-06-28",city:"Rockville",state:"MD",facility:"Montgomery College"}
+  "DEESC-062827":{date:"2027-06-28",city:"Rockville",state:"MD",facility:"Montgomery College"},
+  "DEESC-081027":{date:"2027-08-10",city:"Online",state:"",facility:"Online"},
+  "DEESC-081227":{date:"2027-08-12",city:"Online",state:"",facility:"Online"},
+  "DEESC-081327":{date:"2027-08-13",city:"Online",state:"",facility:"Online"},
+  "DEESC-081727":{date:"2027-08-17",city:"Online",state:"",facility:"Online"},
+  "DEESC-081927":{date:"2027-08-19",city:"Online",state:"",facility:"Online"},
+  "DEESC-082027":{date:"2027-08-20",city:"Online",state:"",facility:"Online"},
+  "DEESC-082427":{date:"2027-08-24",city:"Online",state:"",facility:"Online"},
+  "DEESC-082627":{date:"2027-08-26",city:"Online",state:"",facility:"Online"},
+  "DEESC-090227":{date:"2027-09-02",city:"Online",state:"",facility:"Online"},
+  "DEESC-090327":{date:"2027-09-03",city:"Online",state:"",facility:"Online"},
+  "DEESC-090727":{date:"2027-09-07",city:"Online",state:"",facility:"Online"},
+  "DEESC-090927":{date:"2027-09-09",city:"Online",state:"",facility:"Online"},
+  "DEESC-091427":{date:"2027-09-14",city:"Online",state:"",facility:"Online"},
+  "DEESC-091627":{date:"2027-09-16",city:"Online",state:"",facility:"Online"},
+  "DEESC-092327":{date:"2027-09-23",city:"Online",state:"",facility:"Online"},
+  "DEESC-092827":{date:"2027-09-28",city:"Rockville",state:"MD",facility:"Montgomery College"}
 };
 
 document.getElementById("session_code").addEventListener("change", async function(){
@@ -428,6 +517,7 @@ document.getElementById("btn-submit").addEventListener("click", async function()
     facility: document.getElementById("facility").value,
     host_agency: document.getElementById("host_agency").value,
     trainers: document.getElementById("trainers").value,
+    moderators: document.getElementById("moderators").value,
     agencies: document.getElementById("agencies").value,
     total_trained: document.getElementById("total_trained").value,
     cnt_nt_line: document.getElementById("cnt_nt_line").value,
@@ -465,6 +555,22 @@ document.getElementById("btn-submit").addEventListener("click", async function()
     btn.disabled = false; btn.textContent = "Submit Instructor Report";
   }
 });
+</script>
+
+<script>
+function ktfPicker(boxId, pickClass){
+  var box=document.getElementById(boxId);
+  var picks=Array.prototype.slice.call(document.querySelectorAll("."+pickClass));
+  var roster=picks.map(function(p){return p.value;});
+  function sync(){
+    var others=box.value.split("\n").map(function(s){return s.trim();}).filter(function(s){return s && roster.indexOf(s)===-1;});
+    var chosen=picks.filter(function(p){return p.checked;}).map(function(p){return p.value;});
+    box.value=chosen.concat(others).join("\n");
+  }
+  picks.forEach(function(p){p.addEventListener("change",sync);});
+}
+ktfPicker("trainers","trainer-pick");
+ktfPicker("moderators","moderator-pick");
 </script>
 </body>
 </html>
